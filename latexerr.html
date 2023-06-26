@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+<title>Errores frecuentes en LaTeX | TeXnia</title>
+<meta http-equiv="content-language" content="es" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+
+
+<link href="texytipo.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<div class="page">
+<div class="head">
+ <a href="http://www.texnia.com/">
+  <img src="images/texnia.png" alt="logo"/>
+ </a>
+ <a href="http://www.twitter.com/javier_bezos" style="float: right;">
+  <img style="margin: 6px 3px 0 0;" src="images/twitter64.png" alt="logo"/>
+ </a>
+</div>
+<div class="subhead"></div>
+<div class="article">
+<div class="body">
+
+<h1>Errores frecuentes en LaTeX</h1>
+
+<h2>Las comillas no son comillas</h2>
+
+<p>Me refiero más exactamente a que las comillas rectas de los teclados 
+no son en LaTeX las comillas tipográficas. De hecho, ni siquiera
+es un signo que deba usarse en un documento de LaTeX puro porque 
+es un símbolo que está reservado para funciones especiales, como las
+abreviaciones en el paquete babel. Para obtener la comillas correctas
+hay que emplear el acento agudo duplicado y el apóstrofo duplicado.
+Y si escribimos en español, aún mejor las comillas latinas, que
+pueden obtenerse con varias métodos, como con <code>&#60;&#60;</code> y 
+<code>&#62;&#62;</code> si hemos cargado el <code>spanish</code> de <code>babel</code></p>
+
+<p><pre>
+Estas "comillas" no valen
+Las comillas correctas son ``estas''
+Con babel también las &lt;&lt;españolas&gt;&gt;
+Y con inputenc incluso “” y «», directamente
+</pre></p>
+
+<h2>Línea en blanco antes de fórmulas, listas, etc.</h2>
+
+<p>Una línea en blanco en LaTeX equivale a un nuevo párrafo, por lo que
+una fórmula aislada nunca debería estar precedida de ella.  El
+objetivo puede ser dar más claridad al texto fuente o tal vez se
+piensa que es así como se consigue que la fórmula esté separada, pero
+se trata de un error que causa importantes desajustes de espaciado 
+vertical.
+Si se quiere dejar una línea en blanco en el texto fuente, puede
+comenzarse con <code>%</code>.</p>
+
+<p><pre>
+...un texto que antecede a una fórmula aislada:
+%
+<span class="ltm">\[</span> E = mc^2 <span class="ltm">\]</span>
+</pre></p>
+
+<p>Lo mismo se aplica a entornos como <code>itemize</code>, <code>enumerate</code>, etc.</p>
+
+<h2><code>\noindent</code>  tras fórmulas, lista, etc.</h2>
+
+<p>Es un problema relacionado con el anterior. Si no se quiere sangrar
+el texto que sigue a las fórmulas, listas, etc., hay quien deja una 
+línea y empieza el texto con <code>\noindent</code>. Sin embargo, si no se
+quiere empezar un párrafo nuevo, lo que hay que hacer es no dejar
+una línea en blanco y así, además, el espaciado vertical será el
+correcto. Simplemente:</p>
+
+<p><pre>
+<span class="ltm">\end</span><span class="ltb">{</span>itemize<span class="ltb">}</span>
+y texto que sigue sin ser nuevo párrafo
+</pre></p>
+
+<h2>\[ \] y no $$</h2>
+
+<p>Es una mezcla de Plain TeX y LaTeX. Aunque en LaTeX se considera que
+<code>$</code> es una forma válida de marcar las fórmulas en línea, para las
+fórmulas aisladas LaTeX no admite, al menos en teoría, <code>$$</code>. Hay
+ciertos ajustes de espaciado en <code>\[ \]</code> que hacen recomendable su uso
+en lugar de la marca <code>$$</code>, que está tomada de Plain TeX.</p>
+
+<h2>Para usar Times no hay que usar times</h2>
+
+<p>Puede parecer extraño, pero la razón es que el paquete <code>times</code> se pensó 
+para cambiar la letra del texto y nada más. El resultado es que las
+fórmulas siguen estando en Computer Modern, que es estéticamente
+incompatible con Times. Para hacer un cambio completo es preferible
+el paquete <code>mathptmx</code>, que cambia tanto el texto como las fórmulas. Una 
+alternativa es <code>txfonts</code>, aunque tiene algunos problemas de espaciado
+(tiende a apelotonar los símbolos).</p>
+
+<h2>T1 sin TS1</h2>
+
+<p>Para tener acceso a letras acentuadas reales y no imitadas con la
+superposición de letra y acento, hay que usar el paquete <code>fontenc</code>:</p>
+
+<p><pre>
+<span class="ltm">\usepackage</span><span class="ltb">[</span>T1<span class="ltb">]</span><span class="ltb">{</span>fontenc<span class="ltb">}</span>
+</pre></p>
+
+<p>Sin embargo, para poder incluir el mayor número de letras con
+diacríticos se decidió separar los símbolos como comillas,
+cruces, calderones, etc., en un archivo distinto. El resultado 
+es que en realidad una fuente completa necesita dos archivos:
+uno es el que tiene codificación T1 y el otro tiene codificación
+TS1, y ambos son necesarios. La mejor forma de completar la
+fuente es con el paquete <code>textcomp</code>:</p>
+
+<p><pre>
+<span class="ltm">\usepackage</span><span class="ltb">[</span>T1<span class="ltb">]</span><span class="ltb">{</span>fontenc<span class="ltb">}</span>
+<span class="ltm">\usepackage</span><span class="ltb">{</span>textcomp<span class="ltb">}</span>
+</pre></p>
+
+<p>
+ </div>
+ <div class="extra"></p>
+
+<h2>Más</h2>
+
+<ul>
+<li><a href="spanish.html">spanish para babel</a></li>
+<li><a href="spanish2.html">Decisiones en spanish para babel</a></li>
+<li><a href="ortomatem.pdf">Ortotipografía y notaciones matemáticas</a> (<span class="caps">PDF</span>)</li>
+<li><a href="packages.html">Paquetes de LaTeX</a></li>
+<li><a href="raya_guion_menos.html">Raya, guion y menos</a></li>
+<li><a href="fuentes_griegas.html">Fuentes griegas en matemáticas</a></li>
+<li><a href="html">Tipografía y notaciones científicas</a></li>
+</ul>
+
+
+
+</div>
+<div class="toc">
+
+<form method="get" action="http://www.google.com/search">
+<p class="credits">
+<a href="http://www.google.com/">
+ <img src="http://www.google.com/logos/Logo_25wht.gif"
+ alt="Google" />
+</a><br />
+Buscar en este sitio:<br />
+<input type="text" name="q" size="15" maxlength="255" value="" />
+<input type="hidden" name="sitesearch" value="www.texnia.com" />
+<input type="submit" name="btnG" value="Buscar" />
+</p></form>
+<p class="credits">
+<a title="Compartir en digg"
+href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fwww.texnia.com%2Flatexerr.html&amp;title=Errores frecuentes en LaTeX">
+<img alt="Compartir en digg" src="images/digg.png"/></a>
+<a title="Compartir en Googlebookmark"
+href="http://www.google.com/bookmarks/mark?op=add&amp;bkmk=http%3A%2F%2Fwww.texnia.com%2Flatexerr.html&amp;title=Errores frecuentes en LaTeX">
+<img alt="Compartir en Googlebookmark" src="images/Googlebookmark.png"/></a>
+<a title="Compartir en Yahoo"
+href="http://myweb2.search.yahoo.com/myresults/bookmarklet?&amp;u=http%3A%2F%2Fwww.texnia.com%2Flatexerr.html&amp;title=Errores frecuentes en LaTeX">
+<img alt="Compartir en Yahoo" src="images/Yahoo.png"/></a>
+<a title="Compartir en facebook"
+href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.texnia.com%2Flatexerr.html&amp;t=Errores frecuentes en LaTeX">
+<img alt="Compartir en facebook" src="images/facebook.png"/></a>
+<a title="Compartir en meneame"
+href="http://meneame.net/submit.php?url=http%3A%2F%2Fwww.texnia.com%2Flatexerr.html&amp;title==Errores frecuentes en LaTeX">
+<img alt="Compartir en meneame" src="images/meneame.png"/></a>
+</p>
+<p class="credits">
+<a href="http://www.amazon.com/exec/obidos/registry/DI5KTY76JLA1/">
+<img src="images/amazon2.gif" alt="Wish List" width="80" height="15" />
+</a></p>
+<p class="credits">
+Traducir<br /><ul style="text-align:left;">
+
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=de&amp;u=http%3A%2F%2Fwww.texnia.com%2Flatexerr.html">Deutsch</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=en&amp;u=http%3A%2F%2Fwww.texnia.com%2Flatexerr.html">English</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=fr&amp;u=http%3A%2F%2Fwww.texnia.com%2Flatexerr.html">Fran&ccedil;ais</a></li>
+</ul></p>
+<p class="credits">
+&#169; 2000-2021<br />Javier Bezos<br />All Rights Reserved</p>
+
+</div>
+</div>
+</div>
+<!---------------------- -->
+<div id="container">
+  <nav class="top">
+    <ul>
+      <li><a id="mainlink" href="index.html">&#8962</a></li>
+      <!-- -->
+      <li><a href="#">Libro</a>
+      <ul>
+        <li><a href="notaciones_libro.html">Sobre <i>Tipografía y notaciones científicas</i></a></li>
+        <li><a href="dna_simbolo.html">&#191;Es <span class="caps">DNA</span> un s&iacute;mbolo internacional?</a></li>
+        <li><a href="simbolo_division.html">El s&iacute;mbolo de divisi&oacute;n</a></li>
+        <li><a href="marca_decimal.html">La marca decimal</a></li>
+        <li><a href="mol_definiciones.html">El mol: definici&oacute;n en varios diccionarios</a></li>
+        <li><a href="plural_unidades.html">El plural de nombres de unidades</a></li>
+        <li><a href="referencia_bibliografia.html">Referencias seg&uacute;n la ISO</a></li>
+        <li><a href="siglas_bibliograficas.html">Siglas bibliogr&aacute;ficas</a></li>
+        <li><a href="division_url.html">Ortotipograf&iacute;a de las URLs</a></li>
+        <li><a href="rae_estandares.html">La <span class="caps">RAE</span> y los est&aacute;ndares internacionales</a></li>
+        <!-- <li><a
+        href="dpd_simbolo.html">&#171;S&iacute;mbolo&#187; en el Panhisp&aacute;nico</a></li>-->
+        <li><a href="notaciones_cientificas.html">M&aacute;s&#8230;</a></li>
+      </ul></li>
+      <!-- -->
+      <li><a href="#">LaTeX</a>
+      <ul>
+        <li><a href="#">Packages</a>
+        <ul>
+          <li><a href="titlesec.html">titlesec</a></li>
+          <li><a href="titleps.html">titleps</a></li>
+          <li><a href="enumitem.html">enumitem</a></li>
+          <li><a href="spanish.html" title="babel">spanish</a></li>
+          <li><a href="tensind.html">tensind</a></li>
+          <li><a href="colorspace.html">colorspace</a></li>
+          <li><a href="accents.html">accents</a></li>
+          <li><a href="babel_news.html">babel</a></li>
+          <li><a href="esindex.html">esindex</a></li>
+        </ul>
+        <li><a href="articles.html">Artículos</a></li>
+        <li><a href="samples.html">Muestras</a></li>
+        <li><a href="notaciones.html">Notaciones</a></li>
+        <li><a href="xml.html">XML</a></li>
+        <li><a href="more.html">Más sobre TEX</a></li>
+      </ul>        
+      </li>
+      <!-- -->
+      <li><a href="#">Tipografía y estilo</a>
+      <ul>
+        <li><a href="ortotypo.html">Ortotipografía</a></li>
+        <li><a href="translit.html">Transliteraciones</a></li>
+        <li><a href="referencia_bibliografia.html">Bibliografías</a></li>
+        <li><a href="uso_minusculas_mayusculas.html">Minúsculas</a></li>
+        <li><a href="uso_cursivas.html">Cursivas</a></li>
+        <li><a href="ortotipografia_estilo.html">Más...</a>
+      </ul>
+      </li>
+      <!-- <li><a href="other.html">Miscelánea</a></li> -->
+      <li><a id="contactlink" href="contact.html">&#9993</a></li>
+    </ul>
+  </nav>
+</div>
+<!---------------------- -->
+<div class="foot"><p>© 2000-2021 Javier Bezos</p></div>
+</body>
+</html>

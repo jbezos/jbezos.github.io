@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<title>The colorspace package for LaTeX | TeXnia</title>
+<meta http-equiv="content-language" content="en" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="description" lang="en" content="Spot colors, mixed inks and other tools using LaTeX" />
+
+<link href="texytipo.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<div class="page">
+<div class="head">
+ <a href="http://www.texnia.com/">
+  <img src="images/texnia.png" alt="logo"/>
+ </a>
+ <a href="http://www.twitter.com/javier_bezos" style="float: right;">
+  <img style="margin: 6px 3px 0 0;" src="images/twitter64.png" alt="logo"/>
+ </a>
+</div>
+<div class="subhead"></div>
+<div class="article">
+<div class="body">
+
+<h1>The colorspace package for LaTeX<br /><i>Spot colors, mixed inks and other tools for PDF colorspaces</i></h1>
+
+
+<small><i>Modified: 2016-10-13</i></small>
+
+<p>The aim of this package is, as the name implies, to provide tools for
+<span class="caps">PDF</span> color spaces. It requires <code>xcolor</code>, which is loaded if it
+has not been before. It seems to work with <code>tikz</code>.</p>
+
+<p>Currently (v 1.2.0) it supports what I think are the most common
+tools:</p>
+
+<ul>
+<li>Spot colors (<span class="caps">CMYK</span> and <span class="caps">CIE</span> <span class="caps">LAB</span>), with a clean user interface, and
+  including tints (with the <code>!</code> notation). For example, to define a
+  spot color, just say:</li>
+</ul>
+
+<p><pre>
+<span class="ltm">\definespotcolor</span><span class="ltb">{</span>foo<span class="ltb">}</span><span class="ltb">{</span>BarTone 555 GN<span class="ltb">}</span><span class="ltb">{</span>.3, .4, .5, .6<span class="ltb">}</span>
+</pre></p>
+
+<ul>
+<li>Proper switching of color spaces.</li>
+<li>Mixed spot and process colors (up to 4), like shades (ie, a spot
+  color with black).</li>
+<li><span class="caps">ICC</span> based default <span class="caps">CMYK</span>, <span class="caps">RGB</span> and Gray spaces (one or many)</li>
+<li>Overprinting (across pages, using the color stack).</li>
+</ul>
+
+<p>Currently only <code>pdftex</code> and <code>luatex</code> are supported. Support for
+<code>xetex</code> is on the `to do&#8217; list, but due to the limitations of this
+engine this task is somewhat challenging and I&#8217;m not sure all features
+will be implemented.</p>
+
+<p>Calibrated colors, although not directly supported, can be defined
+with an <span class="caps">ICC</span> profile created with, for example,
+<a href="http://lprof.sourceforge.net/">LPROF</a> and then
+assigned to a default space.</p>
+
+<p>The following image shows a plate for a spot color.</p>
+
+<p><img src="images/colorspaceshade.png" title="Plate for a spot color" alt="Plate for a spot color" /></p>
+
+<h2>Road map</h2>
+
+<ul>
+<li>Cleaning the code up. Currently there are a few huge
+  functions. They must be splitted into smaller chunks performing a
+  single task each. Priority: high.</li>
+<li>Error catching. Priority: high. Currenly some errors just yield
+  unexpected results.</li>
+<li>Tools for common use cases, including a cleaner way to define
+  mixed inks. Varying priority.</li>
+<li>Support for XeTeX and/or dvips. Priority: low &#8211; sorry, but you can
+  contribute code.</li>
+<li><span class="caps">RGB</span> spot colors. Priority: middle. Trivial, but I&#8217;d like to clean the
+  code up before.</li>
+<li><span class="caps">RGB</span> mixed spaces. Priority: middle. Useful for <span class="caps">PDF</span> “tint transforms” when
+  mixing Lab spaces.</li>
+<li>Lab mixed inks. Already available if the user provides a <span class="caps">CMYK</span>
+  alternative (<span class="caps">RGB</span> will be added soon). Relatively easy with a linear
+  transformation, but far from trivial for a proper conversion based
+  on an <span class="caps">ICC</span> profile. Priority: low. Maybe linear transformations could
+  be done with pdftex, but the latter clearly is best done with luatex
+  (or an external tool, even if feasible with pdftex).</li>
+<li>Hexachromatic process. Priority: middle-low, but it doesn&#8217;t fit well
+  with the xcolor internals, so a good deal of additional code will be
+  necessary. The same aplies to color spaces with more than 4 channels
+  in general.</li>
+<li>Calibrated spaces (by hand, because currently you can assign an
+  external <span class="caps">ICC</span> profile to the default spaces). Not difficult, based on
+  the parameters provided by the user. Priority: middle.</li>
+<li>Indexed spaces. Priority: low. Not difficult. Mainly intended for
+  images, so I wonder if a better place is a graphics package.</li>
+<li><span class="caps">PDF</span> “mixing hints”. Not difficult, I think. Priority: middle. The
+  same applies to halftone parameters.</li>
+<li>Spectral data. Who knows—.</li>
+</ul>
+
+<h2>Free downloads</h2>
+
+<p><a href="http://www.ctan.org/tex-archive/macros/latex/contrib/colorspace/">Download page for
+colorspace</a></p>
+
+<p>
+ </div>
+ <div class="extra"></p>
+
+<h2>A present?</h2>
+
+<p>The packages listed here are <strong>free</strong> &#8211; you don&#8217;t have to pay
+anything to use them. However, if you have found them
+useful enough as to give me a little present, I would be very
+grateful. Just go to the following
+<a href="http://www.amazon.com/exec/obidos/registry/DI5KTY76JLA1/">wish
+list</a> at Amazon.</p>
+
+<h2>Donate</h2>
+
+<p>You might consider supporting the development of these packages with a
+donation, too.</p>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+<input type="image" src="images/paypalgreen.png" border="0" name="submit" alt="PayPal. La forma r&aacute;pida y segura de pagar en Internet.">
+<img alt="" border="0" src="https://www.paypal.com/es_ES/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+
+</div>
+<div class="toc">
+
+<form method="get" action="http://www.google.com/search">
+<p class="credits">
+<a href="http://www.google.com/">
+ <img src="http://www.google.com/logos/Logo_25wht.gif"
+ alt="Google" />
+</a><br />
+Buscar en este sitio:<br />
+<input type="text" name="q" size="15" maxlength="255" value="" />
+<input type="hidden" name="sitesearch" value="www.texnia.com" />
+<input type="submit" name="btnG" value="Buscar" />
+</p></form>
+<p class="credits">
+<a title="Compartir en digg"
+href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fwww.texnia.com%2Fcolorspace.html&amp;title=The colorspace package for LaTeX">
+<img alt="Compartir en digg" src="images/digg.png"/></a>
+<a title="Compartir en Googlebookmark"
+href="http://www.google.com/bookmarks/mark?op=add&amp;bkmk=http%3A%2F%2Fwww.texnia.com%2Fcolorspace.html&amp;title=The colorspace package for LaTeX">
+<img alt="Compartir en Googlebookmark" src="images/Googlebookmark.png"/></a>
+<a title="Compartir en Yahoo"
+href="http://myweb2.search.yahoo.com/myresults/bookmarklet?&amp;u=http%3A%2F%2Fwww.texnia.com%2Fcolorspace.html&amp;title=The colorspace package for LaTeX">
+<img alt="Compartir en Yahoo" src="images/Yahoo.png"/></a>
+<a title="Compartir en facebook"
+href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.texnia.com%2Fcolorspace.html&amp;t=The colorspace package for LaTeX">
+<img alt="Compartir en facebook" src="images/facebook.png"/></a>
+<a title="Compartir en meneame"
+href="http://meneame.net/submit.php?url=http%3A%2F%2Fwww.texnia.com%2Fcolorspace.html&amp;title==The colorspace package for LaTeX">
+<img alt="Compartir en meneame" src="images/meneame.png"/></a>
+</p>
+<p class="credits">
+<a href="http://www.amazon.com/exec/obidos/registry/DI5KTY76JLA1/">
+<img src="images/amazon2.gif" alt="Wish List" width="80" height="15" />
+</a></p>
+<p class="credits">
+Traducir<br /><ul style="text-align:left;">
+
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=de&amp;u=http%3A%2F%2Fwww.texnia.com%2Fcolorspace.html">Deutsch</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=en&amp;u=http%3A%2F%2Fwww.texnia.com%2Fcolorspace.html">English</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=fr&amp;u=http%3A%2F%2Fwww.texnia.com%2Fcolorspace.html">Fran&ccedil;ais</a></li>
+</ul></p>
+<p class="credits">
+&#169; 2000-2021<br />Javier Bezos<br />All Rights Reserved</p>
+
+</div>
+</div>
+</div>
+<!---------------------- -->
+<div id="container">
+  <nav class="top">
+    <ul>
+      <li><a id="mainlink" href="index.html">&#8962</a></li>
+      <!-- -->
+      <li><a href="#">Libro</a>
+      <ul>
+        <li><a href="notaciones_libro.html">Sobre <i>Tipografía y notaciones científicas</i></a></li>
+        <li><a href="dna_simbolo.html">&#191;Es <span class="caps">DNA</span> un s&iacute;mbolo internacional?</a></li>
+        <li><a href="simbolo_division.html">El s&iacute;mbolo de divisi&oacute;n</a></li>
+        <li><a href="marca_decimal.html">La marca decimal</a></li>
+        <li><a href="mol_definiciones.html">El mol: definici&oacute;n en varios diccionarios</a></li>
+        <li><a href="plural_unidades.html">El plural de nombres de unidades</a></li>
+        <li><a href="referencia_bibliografia.html">Referencias seg&uacute;n la ISO</a></li>
+        <li><a href="siglas_bibliograficas.html">Siglas bibliogr&aacute;ficas</a></li>
+        <li><a href="division_url.html">Ortotipograf&iacute;a de las URLs</a></li>
+        <li><a href="rae_estandares.html">La <span class="caps">RAE</span> y los est&aacute;ndares internacionales</a></li>
+        <!-- <li><a
+        href="dpd_simbolo.html">&#171;S&iacute;mbolo&#187; en el Panhisp&aacute;nico</a></li>-->
+        <li><a href="notaciones_cientificas.html">M&aacute;s&#8230;</a></li>
+      </ul></li>
+      <!-- -->
+      <li><a href="#">LaTeX</a>
+      <ul>
+        <li><a href="#">Packages</a>
+        <ul>
+          <li><a href="titlesec.html">titlesec</a></li>
+          <li><a href="titleps.html">titleps</a></li>
+          <li><a href="enumitem.html">enumitem</a></li>
+          <li><a href="spanish.html" title="babel">spanish</a></li>
+          <li><a href="tensind.html">tensind</a></li>
+          <li><a href="colorspace.html">colorspace</a></li>
+          <li><a href="accents.html">accents</a></li>
+          <li><a href="babel_news.html">babel</a></li>
+          <li><a href="esindex.html">esindex</a></li>
+        </ul>
+        <li><a href="articles.html">Artículos</a></li>
+        <li><a href="samples.html">Muestras</a></li>
+        <li><a href="notaciones.html">Notaciones</a></li>
+        <li><a href="xml.html">XML</a></li>
+        <li><a href="more.html">Más sobre TEX</a></li>
+      </ul>        
+      </li>
+      <!-- -->
+      <li><a href="#">Tipografía y estilo</a>
+      <ul>
+        <li><a href="ortotypo.html">Ortotipografía</a></li>
+        <li><a href="translit.html">Transliteraciones</a></li>
+        <li><a href="referencia_bibliografia.html">Bibliografías</a></li>
+        <li><a href="uso_minusculas_mayusculas.html">Minúsculas</a></li>
+        <li><a href="uso_cursivas.html">Cursivas</a></li>
+        <li><a href="ortotipografia_estilo.html">Más...</a>
+      </ul>
+      </li>
+      <!-- <li><a href="other.html">Miscelánea</a></li> -->
+      <li><a id="contactlink" href="contact.html">&#9993</a></li>
+    </ul>
+  </nav>
+</div>
+<!---------------------- -->
+<div class="foot"><p>© 2000-2021 Javier Bezos</p></div>
+</body>
+</html>

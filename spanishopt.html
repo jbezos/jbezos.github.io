@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+<title>Opciones de paquete de spanish | TeXnia</title>
+<meta http-equiv="content-language" content="es" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+
+
+<link href="texytipo.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<div class="page">
+<div class="head">
+ <a href="http://www.texnia.com/">
+  <img src="images/texnia.png" alt="logo"/>
+ </a>
+ <a href="http://www.twitter.com/javier_bezos" style="float: right;">
+  <img style="margin: 6px 3px 0 0;" src="images/twitter64.png" alt="logo"/>
+ </a>
+</div>
+<div class="subhead"></div>
+<div class="article">
+<div class="fullbody">
+
+<h1>Opciones de paquete de spanish</h1>
+
+<p>En spanish para babel se puede añadir tras la opción <code>spanish</code> una serie de opciones adicionales que ajustan su comportamiento. Por ejemplo:</p>
+
+<p><pre>
+  <span class="ltm">\usepackage</span><span class="ltb">[</span>spanish,es-nolists<span class="ltb">]</span><span class="ltb">{</span>babel<span class="ltb">}</span>
+</pre></p>
+
+<p>deja las listas (enumerate e itemize) sin tocar, como vengan definidas
+en la clase de documento.  Estas son las opciones más importantes (hay
+más, descritas en el <a href="archive/spanish.pdf">manual de spanish</a>):</p>
+
+<p><dl>
+<dt>es&#45;tabla</dt>
+<dd>Traduce <em>table</em> como <em>tabla</em> en lugar de como <em>cuadro</em>.</dd>
+<dt>es&#45;tilden</dt>
+<dd>Activa la abreviación de tilde n, que a partir de la versión 5 no se activa de forma predeterminada.</dd>
+<dt>es&#45;notilde</dt>
+<dd>No se activa la tilde como abreviación</dd>
+<dt>es&#45;noshorthands</dt>
+<dd>No se activa ninguna abreviación.</dd>
+<dt>es&#45;nodecimaldot</dt>
+<dd>No se activa el punto como marca genérica de decimal.</dd>
+<dt>es&#45;noquoting</dt>
+<dd>No se activan &lt; ni &gt; para las abreviaciones de comillas españolas.</dd>
+<dt>es&#45;noindentfirst</dt>
+<dd>No activa la sangría del primer párrafo tras un título.</dd>
+<dt>es&#45;nolists</dt>
+<dd>No cambia las listas enumerate e itemize.</dd>
+<dt>es&#45;ucroman</dt>
+<dd><code>\roman</code> pasa a versales (mayúsculas)</dd>
+<dt>es&#45;lcroman</dt>
+<dd><code>\roman</code> pasa a minúsculas (recuérdese que en español esto es una falta de ortografía).</dd>
+<dt>es&#45;nosectiondot</dt>
+<dd>No añade punto tras los números de sección, subsección&#8230;</dd>
+<dt>es&#45;uppernames</dt>
+<dd>En los nombres predefinidos, los sustantivos pasan a tener mayúscula inicial (es anglicismo).</dd>
+</dl></p>
+
+<h2>Opciones de localización</h2>
+
+<p>Poco después de que apareciera la nueva versión de spanish (la 4.0) se
+anunció la intención de ir dando opciones de localización por
+países. Aunque los trabajos comenzaron en el 2001, por una razón u
+otra se fue retrasando hasta la aparición de la versión 5.0,
+básicamente para dar una solución adecuada al paso de las opciones.</p>
+
+<p>En este momento no se ha implementado más que la versión mexicana,
+gracias a las sugerencias de usuarios de México, algunos de los cuales
+han dado además referencias adecuadas. Para activar la localización de
+México, basta con decir:</p>
+
+<p><pre>
+  <span class="ltm">\usepackage</span><span class="ltb">[</span>spanish,mexico<span class="ltb">]</span><span class="ltb">{</span>babel<span class="ltb">}</span>
+</pre></p>
+
+<p>Esta opción redefine el orden de las comillas (da prioridad a las
+altas) y activa las siguientes opciones: es&#45;nodecimaldot,
+es&#45;tabla, es&#45;noquoting.  Con una excepción, se han seguido las
+normas u obras tipográficas importantes de México (principalmente
+Ramos Martínez, Jorge de Buen y la Asociación de Academias de la
+Lengua Española, una de las cuales es la mexicana). La excepción es el
+punto decimal, pues se ha dado preferencia al uso y no a la norma
+legal mexicana que impone la coma como separador decimal; quienes por
+alguna razón deban seguir la norma (suele ocurrir en el etiquetado de
+productos), tienen la opción:</p>
+
+<p><pre>
+  <span class="ltm">\usepackage</span><span class="ltb">[</span>spanish,mexico-com<span class="ltb">]</span><span class="ltb">{</span>babel<span class="ltb">}</span>
+</pre></p>
+
+<p>Nada impide, naturalmente, combinar las opciones de localización con
+las demás, como por ejemplo:</p>
+
+<p><pre>
+  <span class="ltm">\usepackage</span><span class="ltb">[</span>spanish,mexico,es-uppernames<span class="ltb">]</span><span class="ltb">{</span>babel<span class="ltb">}</span>
+</pre></p>
+
+
+
+</div>
+<div class="toc">
+
+<form method="get" action="http://www.google.com/search">
+<p class="credits">
+<a href="http://www.google.com/">
+ <img src="http://www.google.com/logos/Logo_25wht.gif"
+ alt="Google" />
+</a><br />
+Buscar en este sitio:<br />
+<input type="text" name="q" size="15" maxlength="255" value="" />
+<input type="hidden" name="sitesearch" value="www.texnia.com" />
+<input type="submit" name="btnG" value="Buscar" />
+</p></form>
+<p class="credits">
+<a title="Compartir en digg"
+href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fwww.texnia.com%2Fspanishopt.html&amp;title=Opciones de paquete de spanish">
+<img alt="Compartir en digg" src="images/digg.png"/></a>
+<a title="Compartir en Googlebookmark"
+href="http://www.google.com/bookmarks/mark?op=add&amp;bkmk=http%3A%2F%2Fwww.texnia.com%2Fspanishopt.html&amp;title=Opciones de paquete de spanish">
+<img alt="Compartir en Googlebookmark" src="images/Googlebookmark.png"/></a>
+<a title="Compartir en Yahoo"
+href="http://myweb2.search.yahoo.com/myresults/bookmarklet?&amp;u=http%3A%2F%2Fwww.texnia.com%2Fspanishopt.html&amp;title=Opciones de paquete de spanish">
+<img alt="Compartir en Yahoo" src="images/Yahoo.png"/></a>
+<a title="Compartir en facebook"
+href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.texnia.com%2Fspanishopt.html&amp;t=Opciones de paquete de spanish">
+<img alt="Compartir en facebook" src="images/facebook.png"/></a>
+<a title="Compartir en meneame"
+href="http://meneame.net/submit.php?url=http%3A%2F%2Fwww.texnia.com%2Fspanishopt.html&amp;title==Opciones de paquete de spanish">
+<img alt="Compartir en meneame" src="images/meneame.png"/></a>
+</p>
+<p class="credits">
+<a href="http://www.amazon.com/exec/obidos/registry/DI5KTY76JLA1/">
+<img src="images/amazon2.gif" alt="Wish List" width="80" height="15" />
+</a></p>
+<p class="credits">
+Traducir<br /><ul style="text-align:left;">
+
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=de&amp;u=http%3A%2F%2Fwww.texnia.com%2Fspanishopt.html">Deutsch</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=en&amp;u=http%3A%2F%2Fwww.texnia.com%2Fspanishopt.html">English</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=fr&amp;u=http%3A%2F%2Fwww.texnia.com%2Fspanishopt.html">Fran&ccedil;ais</a></li>
+</ul></p>
+<p class="credits">
+&#169; 2000-2021<br />Javier Bezos<br />All Rights Reserved</p>
+
+</div>
+</div>
+</div>
+<!---------------------- -->
+<div id="container">
+  <nav class="top">
+    <ul>
+      <li><a id="mainlink" href="index.html">&#8962</a></li>
+      <!-- -->
+      <li><a href="#">Libro</a>
+      <ul>
+        <li><a href="notaciones_libro.html">Sobre <i>Tipografía y notaciones científicas</i></a></li>
+        <li><a href="dna_simbolo.html">&#191;Es <span class="caps">DNA</span> un s&iacute;mbolo internacional?</a></li>
+        <li><a href="simbolo_division.html">El s&iacute;mbolo de divisi&oacute;n</a></li>
+        <li><a href="marca_decimal.html">La marca decimal</a></li>
+        <li><a href="mol_definiciones.html">El mol: definici&oacute;n en varios diccionarios</a></li>
+        <li><a href="plural_unidades.html">El plural de nombres de unidades</a></li>
+        <li><a href="referencia_bibliografia.html">Referencias seg&uacute;n la ISO</a></li>
+        <li><a href="siglas_bibliograficas.html">Siglas bibliogr&aacute;ficas</a></li>
+        <li><a href="division_url.html">Ortotipograf&iacute;a de las URLs</a></li>
+        <li><a href="rae_estandares.html">La <span class="caps">RAE</span> y los est&aacute;ndares internacionales</a></li>
+        <!-- <li><a
+        href="dpd_simbolo.html">&#171;S&iacute;mbolo&#187; en el Panhisp&aacute;nico</a></li>-->
+        <li><a href="notaciones_cientificas.html">M&aacute;s&#8230;</a></li>
+      </ul></li>
+      <!-- -->
+      <li><a href="#">LaTeX</a>
+      <ul>
+        <li><a href="#">Packages</a>
+        <ul>
+          <li><a href="titlesec.html">titlesec</a></li>
+          <li><a href="titleps.html">titleps</a></li>
+          <li><a href="enumitem.html">enumitem</a></li>
+          <li><a href="spanish.html" title="babel">spanish</a></li>
+          <li><a href="tensind.html">tensind</a></li>
+          <li><a href="colorspace.html">colorspace</a></li>
+          <li><a href="accents.html">accents</a></li>
+          <li><a href="babel_news.html">babel</a></li>
+          <li><a href="esindex.html">esindex</a></li>
+        </ul>
+        <li><a href="articles.html">Artículos</a></li>
+        <li><a href="samples.html">Muestras</a></li>
+        <li><a href="notaciones.html">Notaciones</a></li>
+        <li><a href="xml.html">XML</a></li>
+        <li><a href="more.html">Más sobre TEX</a></li>
+      </ul>        
+      </li>
+      <!-- -->
+      <li><a href="#">Tipografía y estilo</a>
+      <ul>
+        <li><a href="ortotypo.html">Ortotipografía</a></li>
+        <li><a href="translit.html">Transliteraciones</a></li>
+        <li><a href="referencia_bibliografia.html">Bibliografías</a></li>
+        <li><a href="uso_minusculas_mayusculas.html">Minúsculas</a></li>
+        <li><a href="uso_cursivas.html">Cursivas</a></li>
+        <li><a href="ortotipografia_estilo.html">Más...</a>
+      </ul>
+      </li>
+      <!-- <li><a href="other.html">Miscelánea</a></li> -->
+      <li><a id="contactlink" href="contact.html">&#9993</a></li>
+    </ul>
+  </nav>
+</div>
+<!---------------------- -->
+<div class="foot"><p>© 2000-2021 Javier Bezos</p></div>
+</body>
+</html>

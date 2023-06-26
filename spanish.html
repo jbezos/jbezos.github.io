@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+<title>Spanish package for babel (TeX and LaTeX) | TeXnia</title>
+<meta http-equiv="content-language" content="es" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+
+
+<link href="texytipo.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<div class="page">
+<div class="head">
+ <a href="http://www.texnia.com/">
+  <img src="images/texnia.png" alt="logo"/>
+ </a>
+ <a href="http://www.twitter.com/javier_bezos" style="float: right;">
+  <img style="margin: 6px 3px 0 0;" src="images/twitter64.png" alt="logo"/>
+ </a>
+</div>
+<div class="subhead"></div>
+<div class="article">
+<div class="fullbody">
+
+<h1>Spanish package for babel (TeX and LaTeX)</h1>
+
+<h2>Descarga</h2>
+
+<p>• <a href="https://www.ctan.org/tex-archive/macros/latex/contrib/babel-contrib/spanish">Página de descarga de spanish
+  5.0p</a>.</p>
+
+<h2>Cambios</h2>
+
+<p><strong>2016-03-03</strong> 5.0p</p>
+
+<ul>
+<li>Corregido también <code>\acute</code> con luatex (ahora usa el carácter compuesto)</li>
+</ul>
+
+<p><strong>2016-01-15</strong> 5.0o</p>
+
+<ul>
+<li>Nueva macro <code>\spanishdatefirst</code></li>
+<li>Corregido un error cuando <code>\alph</code> llegaba a la eñe</li>
+<li>Corregido <code>\dotlessi</code> con luatex</li>
+</ul>
+
+<p><strong>2014-04-24</strong> 5.0n</p>
+
+<ul>
+<li>Nuevas macos <code>\spanishdate</code>, <code>\spanishDate</code></li>
+<li>Sobre todo cambios internos, con las nuevas herramientas de 3.9</li>
+<li>Corregido error con <code>\foreignlanguage</code> en tabular</li>
+</ul>
+
+<p><strong>2014-01-29</strong> 5.0m</p>
+
+<ul>
+<li>Corregido un raro error en cuerpos de letra con super/subíndices</li>
+<li>Corregido espaciado incorrecto en tabular y acentos en OT1.</li>
+<li>Repuesto el código para ., borrado accidentalmente en la anterior versión</li>
+</ul>
+
+<p><strong>2013-04-11</strong> 5.0l</p>
+
+<ul>
+<li>Adaptado a los modificadores de babel.</li>
+</ul>
+
+<p><strong>2011-10-06</strong> 5.0k</p>
+
+<ul>
+<li>Corregido un error cuando . tenía mathcode 8000 antes de cargar spanish.</li>
+</ul>
+
+<p><strong>2010-05-23</strong> 5.0j</p>
+
+<ul>
+<li>Overdot <code>\.</code> ahora es robusto, para que no dé error en argumentos móviles.</li>
+<li>Corregido un error de babel para que no haya problemas con french.</li>
+<li>Corregido un error relacionado con abreviaciones en ifthen</li>
+</ul>
+
+<p><strong>2009-05-11</strong> 5.0i</p>
+
+<ul>
+<li>romanidx y es-preindex no funcionaban. Corregido.</li>
+</ul>
+
+<p><strong>2009-01-09</strong> 5.0h</p>
+
+<ul>
+<li>Añadidas las opciones es&#45;noenumerate y es&#45;noitemize, que pueden resultar de interés, sobre todo, para los usuarios de LyX.</li>
+</ul>
+
+<h2>About</h2>
+
+<p>More about spanish for babel (in Spanish):</p>
+
+<ul>
+<li><a href="spanish2.html">Decisiones en spanish para babel</a>.</li>
+<li><a href="spanishopt.html">Opciones de paquete de spanish</a>.</li>
+</ul>
+
+<p>For the Spanish hyphenation patterns, see:</p>
+
+<ul>
+<li><a href="spanish_hyphen.html">División de palabras del español</a>.</li>
+</ul>
+
+<p>The style file for babel, provides lots of new features to allow a
+true Spanish look and feel regarding typography, following mainly the
+books on the subject by José Martínez de Sousa. Thus, you will have,
+amongst others:</p>
+
+<ul>
+<li>Translations following the International <span class="caps">TEX</span> conventions, as well as
+  date (with both &quot;de&quot; and &quot;del&quot; variants before the year).</li>
+<li>Shorthands like &lt;&lt; and &gt;&gt; (for guillemets), non
+  breakable dashes, raised ¿ and ¡ (for all uppercase texts), etc.</li>
+<li>Dots followed by digits replaced by decimal commas.</li>
+<li>Spanish ordinals and abbreviations, with the preceptive dot included.</li>
+<li>Accented functions: lím, máx, etc.</li>
+<li>In case spanish is the main language, the layout is adjusted:
+  enumerate, itemize, lists with ñ, footnotes with asteriscs,
+  lowercase roman with small caps, etc.</li>
+</ul>
+
+<h2>Bugs and known problems</h2>
+
+<p>El contenido de label en enumitem no admite ordenes frágiles. Pero
+spanish 4 añade una: \es&#64listquot. Está corregido en la versión
+5.0, pero una solución para la 4 es añadir en el preámbulo tras cargar
+spanish:</p>
+
+<p><pre>
+  <span class="ltm">\makeatletter</span>
+  <span class="ltm">\let</span><span class="ltm">\savees@listquot</span><span class="ltm">\es@listquot</span>
+  <span class="ltm">\def</span><span class="ltm">\es@listquot</span><span class="ltb">{</span><span class="ltm">\protect</span><span class="ltm">\savees@listquot</span><span class="ltb">}</span>
+  <span class="ltm">\makeatletter</span>
+</pre></p>
+
+<p>Por un problema en dcolumn (véase <a href="http://www.latex-project.org/cgi-bin/ltxbugs2html?pr=tools/3759">LaTeX bug report tools/3759
+(dcolumn conflict with icomma
+package</a>),
+el punto decimal puede fallar en ese paquete. Una solución rápida es:</p>
+
+<p><pre>
+  <span class="ltm">\usepackage</span><span class="ltb">[</span>spanish<span class="ltb">]</span><span class="ltb">{</span>babel<span class="ltb">}</span>
+  <span class="ltm">\decimalpoint</span>
+  <span class="ltm">\usepackage</span><span class="ltb">{</span>dcolumn<span class="ltb">}</span>
+  <span class="ltm">\newcolumntype</span><span class="ltb">{</span>.<span class="ltb">}</span><span class="ltb">{</span>D<span class="ltb">{</span>.<span class="ltb">}</span><span class="ltb">{</span><span class="ltm">\esperiod</span><span class="ltb">}</span><span class="ltb">{</span>-1<span class="ltb">}</span><span class="ltb">}</span>
+  <span class="ltm">\makeatletter</span>
+  <span class="ltm">\addto</span><span class="ltm">\shorthandsspanish</span><span class="ltb">{</span><span class="ltm">\let</span><span class="ltm">\esperiod</span><span class="ltm">\es@period@code</span><span class="ltb">}</span>
+  <span class="ltm">\makeatother</span>
+  <span class="ltm">\begin</span><span class="ltb">{</span>document<span class="ltb">}</span>
+  etc.
+</pre></p>
+
+<p class="report released"><b>Bug:</b> Error if dot has mathcode &quot;8000<br />
+<b>Sent by:</b> Federico Arboleda (2011-04-24)<br />
+<b>Status:</b> Closed (released)</p>
+
+<p>This error is also raised when spanish is used with babelbib, because
+of a bug in latter package (reported to the author), which mangles the
+switching mechanism of babel.</p>
+
+
+
+</div>
+<div class="toc">
+
+<form method="get" action="http://www.google.com/search">
+<p class="credits">
+<a href="http://www.google.com/">
+ <img src="http://www.google.com/logos/Logo_25wht.gif"
+ alt="Google" />
+</a><br />
+Buscar en este sitio:<br />
+<input type="text" name="q" size="15" maxlength="255" value="" />
+<input type="hidden" name="sitesearch" value="www.texnia.com" />
+<input type="submit" name="btnG" value="Buscar" />
+</p></form>
+<p class="credits">
+<a title="Compartir en digg"
+href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fwww.texnia.com%2Fspanish.html&amp;title=Spanish package for babel (TeX and LaTeX)">
+<img alt="Compartir en digg" src="images/digg.png"/></a>
+<a title="Compartir en Googlebookmark"
+href="http://www.google.com/bookmarks/mark?op=add&amp;bkmk=http%3A%2F%2Fwww.texnia.com%2Fspanish.html&amp;title=Spanish package for babel (TeX and LaTeX)">
+<img alt="Compartir en Googlebookmark" src="images/Googlebookmark.png"/></a>
+<a title="Compartir en Yahoo"
+href="http://myweb2.search.yahoo.com/myresults/bookmarklet?&amp;u=http%3A%2F%2Fwww.texnia.com%2Fspanish.html&amp;title=Spanish package for babel (TeX and LaTeX)">
+<img alt="Compartir en Yahoo" src="images/Yahoo.png"/></a>
+<a title="Compartir en facebook"
+href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.texnia.com%2Fspanish.html&amp;t=Spanish package for babel (TeX and LaTeX)">
+<img alt="Compartir en facebook" src="images/facebook.png"/></a>
+<a title="Compartir en meneame"
+href="http://meneame.net/submit.php?url=http%3A%2F%2Fwww.texnia.com%2Fspanish.html&amp;title==Spanish package for babel (TeX and LaTeX)">
+<img alt="Compartir en meneame" src="images/meneame.png"/></a>
+</p>
+<p class="credits">
+<a href="http://www.amazon.com/exec/obidos/registry/DI5KTY76JLA1/">
+<img src="images/amazon2.gif" alt="Wish List" width="80" height="15" />
+</a></p>
+<p class="credits">
+Traducir<br /><ul style="text-align:left;">
+
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=de&amp;u=http%3A%2F%2Fwww.texnia.com%2Fspanish.html">Deutsch</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=en&amp;u=http%3A%2F%2Fwww.texnia.com%2Fspanish.html">English</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=fr&amp;u=http%3A%2F%2Fwww.texnia.com%2Fspanish.html">Fran&ccedil;ais</a></li>
+</ul></p>
+<p class="credits">
+&#169; 2000-2021<br />Javier Bezos<br />All Rights Reserved</p>
+
+</div>
+</div>
+</div>
+<!---------------------- -->
+<div id="container">
+  <nav class="top">
+    <ul>
+      <li><a id="mainlink" href="index.html">&#8962</a></li>
+      <!-- -->
+      <li><a href="#">Libro</a>
+      <ul>
+        <li><a href="notaciones_libro.html">Sobre <i>Tipografía y notaciones científicas</i></a></li>
+        <li><a href="dna_simbolo.html">&#191;Es <span class="caps">DNA</span> un s&iacute;mbolo internacional?</a></li>
+        <li><a href="simbolo_division.html">El s&iacute;mbolo de divisi&oacute;n</a></li>
+        <li><a href="marca_decimal.html">La marca decimal</a></li>
+        <li><a href="mol_definiciones.html">El mol: definici&oacute;n en varios diccionarios</a></li>
+        <li><a href="plural_unidades.html">El plural de nombres de unidades</a></li>
+        <li><a href="referencia_bibliografia.html">Referencias seg&uacute;n la ISO</a></li>
+        <li><a href="siglas_bibliograficas.html">Siglas bibliogr&aacute;ficas</a></li>
+        <li><a href="division_url.html">Ortotipograf&iacute;a de las URLs</a></li>
+        <li><a href="rae_estandares.html">La <span class="caps">RAE</span> y los est&aacute;ndares internacionales</a></li>
+        <!-- <li><a
+        href="dpd_simbolo.html">&#171;S&iacute;mbolo&#187; en el Panhisp&aacute;nico</a></li>-->
+        <li><a href="notaciones_cientificas.html">M&aacute;s&#8230;</a></li>
+      </ul></li>
+      <!-- -->
+      <li><a href="#">LaTeX</a>
+      <ul>
+        <li><a href="#">Packages</a>
+        <ul>
+          <li><a href="titlesec.html">titlesec</a></li>
+          <li><a href="titleps.html">titleps</a></li>
+          <li><a href="enumitem.html">enumitem</a></li>
+          <li><a href="spanish.html" title="babel">spanish</a></li>
+          <li><a href="tensind.html">tensind</a></li>
+          <li><a href="colorspace.html">colorspace</a></li>
+          <li><a href="accents.html">accents</a></li>
+          <li><a href="babel_news.html">babel</a></li>
+          <li><a href="esindex.html">esindex</a></li>
+        </ul>
+        <li><a href="articles.html">Artículos</a></li>
+        <li><a href="samples.html">Muestras</a></li>
+        <li><a href="notaciones.html">Notaciones</a></li>
+        <li><a href="xml.html">XML</a></li>
+        <li><a href="more.html">Más sobre TEX</a></li>
+      </ul>        
+      </li>
+      <!-- -->
+      <li><a href="#">Tipografía y estilo</a>
+      <ul>
+        <li><a href="ortotypo.html">Ortotipografía</a></li>
+        <li><a href="translit.html">Transliteraciones</a></li>
+        <li><a href="referencia_bibliografia.html">Bibliografías</a></li>
+        <li><a href="uso_minusculas_mayusculas.html">Minúsculas</a></li>
+        <li><a href="uso_cursivas.html">Cursivas</a></li>
+        <li><a href="ortotipografia_estilo.html">Más...</a>
+      </ul>
+      </li>
+      <!-- <li><a href="other.html">Miscelánea</a></li> -->
+      <li><a id="contactlink" href="contact.html">&#9993</a></li>
+    </ul>
+  </nav>
+</div>
+<!---------------------- -->
+<div class="foot"><p>© 2000-2021 Javier Bezos</p></div>
+</body>
+</html>

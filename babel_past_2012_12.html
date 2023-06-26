@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<title>Babel: past work | TeXnia</title>
+<meta http-equiv="content-language" content="en" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="description" lang="en" content="Info on the past work babel" />
+
+<link href="texytipo.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<div class="page">
+<div class="head">
+ <a href="http://www.texnia.com/">
+  <img src="images/texnia.png" alt="logo"/>
+ </a>
+ <a href="http://www.twitter.com/javier_bezos" style="float: right;">
+  <img style="margin: 6px 3px 0 0;" src="images/twitter64.png" alt="logo"/>
+ </a>
+</div>
+<div class="subhead"></div>
+<div class="article">
+<div class="body">
+
+<h1>Babel: past work</h1>
+
+<p><b>This page is old. The current site for babel, the multilingual
+framework to localize LaTeX, LuaLaTeX and XeLaTeX, is <a
+href="https://latex3.github.io/babel/">here</a>.</b></p>
+
+<small><i>Updated: 2013-04-01</i></small>
+
+<h2>2012-12-05</h2>
+
+<p>Due to an unexpected change in the working hours in my job I had to
+delay the beta to (I hope) December. The good news is I have time
+to continue maintaining babel in the near future. On the other hand
+I&#8217;m somewhat stuck with one of the last tasks: hooks.</p>
+
+<h2>2012-08-09</h2>
+
+<p>Bug: <code>\bibitem</code>  is out of sync with <code>\selectlanguage</code> in the <code>aux</code> file.
+The reason is <code>\bibitem</code> uses <code>\immediate</code> (and others, in fact),
+while <code>\selectlanguage</code> doesn&#8217;t.</p>
+
+<p>Another bug: <code>\aliasshorthand</code> didn&#8217;t make an alias, but just let the
+new shorthand to the original character at the moment this macro is
+used, whatever meaning has got (usually the non-active value in the
+preamble). Other problem is user shorthand are activated and
+deactivated by languages, so that they have a somewhat
+unpredictable behaviour. Perhaps a new <code>\useshorthands*</code>, which will make
+sure the shorthand is always activated, would be useful. </p>
+
+<p>By the way, for the sake of clarity I&#8217;m using the following terminology:
+“active” is used in the TeX sense, ie, with catcode 13, and therefore
+“non-active” means “letter” or “other” (or in the case of ^, “superscript”).
+“Activated” applies to an active character which behaves like a
+shorthand, while “deactivated” applies to a shorthand using the
+“system” value, typically the corresponding non-active char (but not
+always; for example, <code>~</code> as a non-breaking space). Note a deactivated
+shorthand is still an active character, whose definition is usually
+certain non-active char.</p>
+
+<p>For
+<a href="http://www.latex-project.org/cgi-bin/ltxbugs2html?pr=babel/4196">babel/4196</a>
+I&#8217;ve extended <code>\defineshorthand</code> so that it can be used to redefine
+language shorthands. (A few macros for discretionaries will be
+added, too.) This way, we&#8217;ll have both simplicity and flexibility.</p>
+
+<p>You could start with, say (with pseudo-code):</p>
+
+<p><pre>
+<span class="ltm">\defineshorthand</span><span class="ltb">{</span>"*<span class="ltb">}</span><span class="ltb">{</span><span class="ltb">(</span>use a soft hyphen<span class="ltb">)</span><span class="ltb">}</span>
+<span class="ltm">\defineshorthand</span><span class="ltb">{</span>"-<span class="ltb">}</span><span class="ltb">{</span><span class="ltb">(</span>use a hard hyphen<span class="ltb">)</span><span class="ltb">}</span>
+</pre></p>
+
+<p>However, behaviour of hyphens are language dependent. For example, in
+languages like Polish and Portugese, a hard hyphen inside compound words
+are repeated at the beginning of the next line. You could set:</p>
+
+<p><pre>
+<span class="ltm">\defineshorthand</span><span class="ltb">[</span>polish,portugese<span class="ltb">]</span><span class="ltb">{</span>"-<span class="ltb">}</span><span class="ltb">{</span><span class="ltb">(</span>use a repeated hyphen<span class="ltb">)</span><span class="ltb">}</span>
+</pre></p>
+
+<p>You have a single unified shorthand (<code>"-</code>), with a content-based
+meaning (“compound word hyphen”) whose visual behavior is that
+expected in each context.</p>
+
+<h2>2012-07-31</h2>
+
+<p>The switching mechanism of <code>\foreignlanguage</code> and <code>otherlanguage*</code>
+does not work correctly, because <code>\originalTeX</code> is either missing or
+incorrectly built. For example, with</p>
+
+<p><pre>
+  <span class="ltm">\usepackage</span><span class="ltb">[</span>german,greek<span class="ltb">]</span><span class="ltb">{</span>babel<span class="ltb">}</span>
+  <span class="ltm">\begin</span><span class="ltb">{</span>document<span class="ltb">}</span>
+  Greek
+  <span class="ltm">\begin</span><span class="ltb">{</span>otherlanguage*<span class="ltb">}</span><span class="ltb">{</span>german<span class="ltb">}</span>
+  German
+  <span class="ltm">\end</span><span class="ltb">{</span>otherlanguage*<span class="ltb">}</span>
+  Greek
+  <span class="ltm">\end</span><span class="ltb">{</span>document<span class="ltb">}</span>
+</pre></p>
+
+<p>the German text is typeset using Greek characters. The aux file is
+wrong, too. Now, except for the <code>date</code> and <code>captions</code> groups, they
+will mimic the behaviour of <code>\selectlanguage</code> (in other words, they
+will share the code).</p>
+
+<h2>2012-07-28</h2>
+
+<p>Bugs discovered recently are related to patterns and primes.</p>
+
+<p>Patterns were loaded before the previous language was closed (even
+before <code>\originalTeX</code>). Now are loaded after the selected language has
+been setup (after <code>\extras...</code>).</p>
+
+<p>Primes and hats are not handled correctly. The following raises an
+error (‘Double superscript’):</p>
+
+<p><pre>
+  <span class="ltm">\usepackage</span><span class="ltb">[</span>activeacute,catalan,esperanto<span class="ltb">]</span><span class="ltb">{</span>babel<span class="ltb">}</span>
+  <span class="ltm">\begin</span><span class="ltb">{</span>document<span class="ltb">}</span>
+  <span class="ltd">$</span>f'^2<span class="ltd">$</span>
+  <span class="ltm">\end</span><span class="ltb">{</span>document<span class="ltb">}</span>
+</pre></p>
+
+<p>And the following, too:</p>
+
+<p><pre>
+  <span class="ltm">\usepackage</span><span class="ltb">[</span>activeacute,catalan<span class="ltb">]</span><span class="ltb">{</span>babel<span class="ltb">}</span>
+  <span class="ltm">\begin</span><span class="ltb">{</span>document<span class="ltb">}</span>
+  <span class="ltm">\shorthandoff</span><span class="ltb">{</span>'<span class="ltb">}</span>
+  <span class="ltd">$</span>f'''<span class="ltd">$</span>
+  <span class="ltm">\end</span><span class="ltb">{</span>document<span class="ltb">}</span>
+</pre></p>
+
+<h2>2012-07-06</h2>
+
+<p>One of the problems one must face when loading files from different
+sources and authors is that of incompatibilities. While packages can be
+loaded separately and there are tools like <code>\PassOptionsToPackage</code>,
+babel languages are loaded in one go, and there is no way to insert some
+code among them.</p>
+
+<p>I&#8217;ve analyzed 5 approaches:</p>
+
+<p>1) Loading a 'prebabel&#8217; package which would define <code>\AtEndOfLanguage</code>,
+with code to be used when the main babel package is loaded. I find
+this somewhat clumsy, but it could be useful if other packages and
+classes need to preset some option.</p>
+
+<p>2) Delaying the loading of all languages to a <code>\babelinput</code>, so that you
+can use <code>\AtEndOfLanguage</code>. After some tests, I still find it a bit
+confusing, and you can do nothing before loading babel (eg, “passing”
+some option to a language) .</p>
+
+<p>3) Delaying the loading of separate languages, so that
+<code>\AtEndOfLanguage</code> is not required. This option doesn&#8217;t seem possible
+with current babel.</p>
+
+<p>4) Loading named local config files, much like <code>bblopts.cfg</code> but only
+when requested (with a package option <code>config=file</code>). This could useful
+in general and I&#8217;ve added it. However, presetting options is not easy
+(but not impossible).</p>
+
+<p>5) Executing macros following certain naming conventions (eg,
+<code>\babelafteritalian</code>), so that you can define them with
+<code>\(re)newcommand</code>. Unfortunately, this leaves to the user the
+responsibility of defining them in the proper way (remember LaTeX
+doesn&#8217;t provide a way to add stuff to an existing macro).</p>
+
+<p>Well, there are still further approaches, like having package options
+<code>after-latin=\string\dosomething</code> or <code>after-latin=dosomething</code>, but things
+are getting worse.</p>
+
+<h2>2012-06-16</h2>
+
+<p>When investigating babel/3800 I discovered some issues to be addressed
+related to options, mainly the fact combining package and global
+options has not a well-defined behaviour (the main language sometimes
+is the last named one, but sometimes it&#8217;s not). The doc says you can use
+package options <strong>or</strong> global options, but this is not enforced and it can
+be done without complaint (just with an unexpected behaviour).</p>
+
+<p>Furthermore, <code>ldf</code> files not bundled with <code>babel</code> are not recognized as
+global options. So, I&#8217;ve added some code to make sure global options
+are properly recognized, to raise an error (or perhaps only a warning,
+I&#8217;m not sure) if the main language is not the last named one and to
+set explicitly the main language in cases like</p>
+
+<p><pre>
+  <span class="ltm">\documentclass</span><span class="ltb">[</span>ngerman<span class="ltb">]</span><span class="ltb">{</span>book<span class="ltb">}</span>
+  <span class="ltm">\usepackage</span><span class="ltb">[</span>english,ngerman<span class="ltb">]</span><span class="ltb">{</span>babel<span class="ltb">}</span>
+</pre></p>
+
+<p>Oddly, this set <code>english</code> as the main language. Now it complains with a
+message saying you have to use</p>
+
+<p><pre>
+  <span class="ltm">\usepackage</span><span class="ltb">[</span>english,main=ngerman<span class="ltb">]</span><span class="ltb">{</span>babel<span class="ltb">}</span>
+</pre></p>
+
+<p>To seize the opportunity, I&#8217;ve added another option which I had
+already written, to control shorthands (but not yet finished nor
+tested thoroughly).</p>
+
+<p>
+ </div>
+ <div class="extra"></p>
+
+<h2>More</h2>
+
+<ul>
+<li><a href="incubator.html">The language incubator</a></li>
+<li><a href="babel_work.html">Current work</a></li>
+<li><a href="babel_news.html">Babel</a></li>
+</ul>
+
+
+
+</div>
+<div class="toc">
+
+<form method="get" action="http://www.google.com/search">
+<p class="credits">
+<a href="http://www.google.com/">
+ <img src="http://www.google.com/logos/Logo_25wht.gif"
+ alt="Google" />
+</a><br />
+Buscar en este sitio:<br />
+<input type="text" name="q" size="15" maxlength="255" value="" />
+<input type="hidden" name="sitesearch" value="www.texnia.com" />
+<input type="submit" name="btnG" value="Buscar" />
+</p></form>
+<p class="credits">
+<a title="Compartir en digg"
+href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fwww.texnia.com%2Fbabel_past_2012_12.html&amp;title=Babel: past work">
+<img alt="Compartir en digg" src="images/digg.png"/></a>
+<a title="Compartir en Googlebookmark"
+href="http://www.google.com/bookmarks/mark?op=add&amp;bkmk=http%3A%2F%2Fwww.texnia.com%2Fbabel_past_2012_12.html&amp;title=Babel: past work">
+<img alt="Compartir en Googlebookmark" src="images/Googlebookmark.png"/></a>
+<a title="Compartir en Yahoo"
+href="http://myweb2.search.yahoo.com/myresults/bookmarklet?&amp;u=http%3A%2F%2Fwww.texnia.com%2Fbabel_past_2012_12.html&amp;title=Babel: past work">
+<img alt="Compartir en Yahoo" src="images/Yahoo.png"/></a>
+<a title="Compartir en facebook"
+href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.texnia.com%2Fbabel_past_2012_12.html&amp;t=Babel: past work">
+<img alt="Compartir en facebook" src="images/facebook.png"/></a>
+<a title="Compartir en meneame"
+href="http://meneame.net/submit.php?url=http%3A%2F%2Fwww.texnia.com%2Fbabel_past_2012_12.html&amp;title==Babel: past work">
+<img alt="Compartir en meneame" src="images/meneame.png"/></a>
+</p>
+<p class="credits">
+<a href="http://www.amazon.com/exec/obidos/registry/DI5KTY76JLA1/">
+<img src="images/amazon2.gif" alt="Wish List" width="80" height="15" />
+</a></p>
+<p class="credits">
+Traducir<br /><ul style="text-align:left;">
+
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=de&amp;u=http%3A%2F%2Fwww.texnia.com%2Fbabel_past_2012_12.html">Deutsch</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=en&amp;u=http%3A%2F%2Fwww.texnia.com%2Fbabel_past_2012_12.html">English</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=fr&amp;u=http%3A%2F%2Fwww.texnia.com%2Fbabel_past_2012_12.html">Fran&ccedil;ais</a></li>
+</ul></p>
+<p class="credits">
+&#169; 2000-2021<br />Javier Bezos<br />All Rights Reserved</p>
+
+</div>
+</div>
+</div>
+<!---------------------- -->
+<div id="container">
+  <nav class="top">
+    <ul>
+      <li><a id="mainlink" href="index.html">&#8962</a></li>
+      <!-- -->
+      <li><a href="#">Libro</a>
+      <ul>
+        <li><a href="notaciones_libro.html">Sobre <i>Tipografía y notaciones científicas</i></a></li>
+        <li><a href="dna_simbolo.html">&#191;Es <span class="caps">DNA</span> un s&iacute;mbolo internacional?</a></li>
+        <li><a href="simbolo_division.html">El s&iacute;mbolo de divisi&oacute;n</a></li>
+        <li><a href="marca_decimal.html">La marca decimal</a></li>
+        <li><a href="mol_definiciones.html">El mol: definici&oacute;n en varios diccionarios</a></li>
+        <li><a href="plural_unidades.html">El plural de nombres de unidades</a></li>
+        <li><a href="referencia_bibliografia.html">Referencias seg&uacute;n la ISO</a></li>
+        <li><a href="siglas_bibliograficas.html">Siglas bibliogr&aacute;ficas</a></li>
+        <li><a href="division_url.html">Ortotipograf&iacute;a de las URLs</a></li>
+        <li><a href="rae_estandares.html">La <span class="caps">RAE</span> y los est&aacute;ndares internacionales</a></li>
+        <!-- <li><a
+        href="dpd_simbolo.html">&#171;S&iacute;mbolo&#187; en el Panhisp&aacute;nico</a></li>-->
+        <li><a href="notaciones_cientificas.html">M&aacute;s&#8230;</a></li>
+      </ul></li>
+      <!-- -->
+      <li><a href="#">LaTeX</a>
+      <ul>
+        <li><a href="#">Packages</a>
+        <ul>
+          <li><a href="titlesec.html">titlesec</a></li>
+          <li><a href="titleps.html">titleps</a></li>
+          <li><a href="enumitem.html">enumitem</a></li>
+          <li><a href="spanish.html" title="babel">spanish</a></li>
+          <li><a href="tensind.html">tensind</a></li>
+          <li><a href="colorspace.html">colorspace</a></li>
+          <li><a href="accents.html">accents</a></li>
+          <li><a href="babel_news.html">babel</a></li>
+          <li><a href="esindex.html">esindex</a></li>
+        </ul>
+        <li><a href="articles.html">Artículos</a></li>
+        <li><a href="samples.html">Muestras</a></li>
+        <li><a href="notaciones.html">Notaciones</a></li>
+        <li><a href="xml.html">XML</a></li>
+        <li><a href="more.html">Más sobre TEX</a></li>
+      </ul>        
+      </li>
+      <!-- -->
+      <li><a href="#">Tipografía y estilo</a>
+      <ul>
+        <li><a href="ortotypo.html">Ortotipografía</a></li>
+        <li><a href="translit.html">Transliteraciones</a></li>
+        <li><a href="referencia_bibliografia.html">Bibliografías</a></li>
+        <li><a href="uso_minusculas_mayusculas.html">Minúsculas</a></li>
+        <li><a href="uso_cursivas.html">Cursivas</a></li>
+        <li><a href="ortotipografia_estilo.html">Más...</a>
+      </ul>
+      </li>
+      <!-- <li><a href="other.html">Miscelánea</a></li> -->
+      <li><a id="contactlink" href="contact.html">&#9993</a></li>
+    </ul>
+  </nav>
+</div>
+<!---------------------- -->
+<div class="foot"><p>© 2000-2021 Javier Bezos</p></div>
+</body>
+</html>

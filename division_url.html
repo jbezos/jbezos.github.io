@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+<title>Ortotipografía de las URLs | TeXnia</title>
+<meta http-equiv="content-language" content="es" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="description" lang="es" content="Cómo se divide una URL y cómo se delimita del texto" />
+
+<link href="texytipo.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<div class="page">
+<div class="head">
+ <a href="http://www.texnia.com/">
+  <img src="images/texnia.png" alt="logo"/>
+ </a>
+ <a href="http://www.twitter.com/javier_bezos" style="float: right;">
+  <img style="margin: 6px 3px 0 0;" src="images/twitter64.png" alt="logo"/>
+ </a>
+</div>
+<div class="subhead"></div>
+<div class="article">
+<div class="body">
+
+<h1>Ortotipografía de las URLs<br /><i>Tipografía y notaciones científicas</i></h1>
+
+
+<small><i>Revisado: 2012-02-11</i></small>
+
+<h2>División</h2>
+
+<p>Las URLs<sup class="footnote">[<a href="#fn1" id="fnref1">1</a>]</sup>, usadas principalmente para las direcciones de sitios web,
+presentan uno de los problemas <a href="ortotypo.html">ortotipográficos</a> más
+interesantes de la actualidad: pueden llegar a ser muy largas y no hay
+un solo espacio en ellas que permita su división entre una línea y
+otra si fuera necesario.  Además, deben conservarse todos y cada uno
+de los caracteres tal como aparecen, sin quitar ni añadir ninguno.</p>
+
+<p>La <strong>primera tendencia</strong> fue la de aplicar sin más las normas del texto
+ordinario: se divide después de un signo de puntuación, y de dividirse
+entre letras, se añade un guion al final de la línea, como si fuera
+una palabra más.  Como es lógico, esta solución estaba lejos de ser
+satisfactoria, sobre todo por la adición de un guion que no quedaba
+claro si pertenecía a la <span class="caps">URL</span> o no (de hecho, la norma <a
+href=&#8220;http://tools.ietf.org/html/rfc3986&#8221;><span class="caps">RFC</span> 3986</a> establece que
+no se deben añadir guiones al partir una <span class="caps">URL</span>).  Por desgracia, no es
+raro que se siga practicando este sistema.</p>
+
+<p>En la <strong>actualidad</strong> se tiende a otras soluciones que tienen en 
+cuenta el hecho de que una <span class="caps">URL</span> tiene cierta <strong>estructura 
+interna</strong> y que permiten reconocer más fácilmente los signos
+de puntuación que no pertenecen a la frase donde está la 
+<span class="caps">URL</span>, sino a la <span class="caps">URL</span> misma. No hay, sin embargo, acuerdo en 
+el tratamiento de todos esos elementos, aunque sí hay 
+ciertas tendencias claras:</p>
+
+<ul>
+<li>El grupo <code>://</code> es indivisible y se debe partir
+después de él, de modo que quede al final de la línea.</li>
+<li>Con la barra <code>/</code> también se parte después.</li>
+<li>Con otros signos se parte antes, de modo que quedan al comienzo de
+una línea.</li>
+</ul>
+
+<p>Así, como los signos de puntuación del texto nunca quedan al comienzo
+de una línea, la presencia de uno en esa posición solo puede ser de
+una <span class="caps">URL</span>, lo que implica por fuerza que continúa (para fijar ideas,
+piénsese en un punto).  Una regla similar se puede encontrar en la
+norma <a href="referencia_bibliografia.html"><span class="caps">ISO</span> 690:2010</a> sobre bibliografías
+(de forma un tanto sorprendente, pues no parece que sea el lugar
+apropiado).</p>
+
+<p>En el manual de Oxford se incluye el porcentaje entre los signos que
+quedan al final.  No parece una norma muy lógica, pues forma un bloque
+indivisible con los dos caracteres que siguen para representar otro
+caracter (por ejemplo, <code>%20</code> es un espacio).</p>
+
+<p>En el manual de Chicago se incluyen los dos puntos y la arroba entre
+los signos que quedan al final.  Sin duda, saben de lo que hablan,
+pues en las URLs estos dos caracteres tienen funciones especiales
+(delimitan el usuario, la contraseña y el puerto).  Es más dudoso que
+tenga alguna utilidad considerar que son casos especiales.</p>
+
+<p>Sin embargo, uno se pregunta: ¿un paréntesis de cerrar también va al
+comienzo de una línea?  Puede que las <strong>reglas</strong> haya que pensarlas un
+poco más y establecer ciertas prioridades para la división, de modo
+que si hay varios signos agrupados se elige el punto con mayor
+prioridad:</p>
+
+<ul>
+<li>Después de barra (<code>/</code>).</li>
+<li>Antes de interrogación (<code>?</code>).</li>
+<li>Antes de <code>&#38;</code>, <code>#</code>, dos puntos (<code>:</code>) y arroba (<code>@</code>); el grupo 
+<code>://</code> se parte después.</li>
+<li>Antes de igual (<code>=</code>) y punto (<code>.</code>).</li>
+<li>Antes de otros signos, como tilde, subraya o guion; grupos como <code>~/</code>
+se partirían después de la barra; grupos como <code>~.</code> entre los dos
+signos, pues el punto tiene prioridad; grupos como <code>=~</code> antes, pues el
+igual tiene prioridad.</li>
+<li>Después de signos de cierre, como <code>) ] } </code>».</li>
+<li>Antes o después del grupo <code>%xx</code> (donde <code>xx</code> son dos caracteres),
+que es indivisible.</li>
+<li>Como último recurso, entre palabras, si se pueden determinar.</li>
+</ul>
+
+<p>El problema es que reglas así son complejas y por tanto solo son
+realmente aplicables si se pueden automatizar, salvo que se trate de
+una pocas direcciones.  No obstante, puede ser un punto de partida
+para análisis posteriores en aplicaciones concretas.</p>
+
+<h2>Delimitación</h2>
+
+<p>Otro problema es delimitar las URLs de forma que <strong>quede claro donde
+terminan</strong> (su comienzo es siempre obvio).  Aunque la división expuesta
+ya soluciona en parte este punto, en ocasiones puede ser necesario ser
+más explícitos.</p>
+
+<p>Una de las normas de Internet (<a
+href=&#8220;http://tools.ietf.org/html/rfc3986&#8221;><span class="caps">RFC</span> 3986</a>) sugiere que en
+<strong>texto plano</strong> se delimite la <span class="caps">URL</span> con espacios, con comillas rectas o,
+preferiblemente, lo que llama «corchetes angulares», que en realidad
+son los signos de <em>menor que</em> (<code>&#60;</code>) y <em>mayor que</em> (<code>&#62;</code>).  Hay una
+lógica en esta propuesta: estos signos no son válidos en una <span class="caps">URL</span>, por
+lo que no debe haber confusión alguna.</p>
+
+<p>La propia norma es lo bastante cauta como para limitar este formato al
+texto plano.  Extrapolarlo a <strong>textos tipográficos</strong> es problemático, pues
+no son signos apropiados para mantener una adecuada presentación
+ortotipográfica.  En la práctica se usan otras soluciones, como el
+cambio de fuente (normalmente mecana o sin remates).  Otra alternativa
+es emplear algún signo parecido pero mejor integrado tipográficamente,
+como las comillas angulares simples, que rara vez se usan (y de hecho,
+en una propuesta de una norma estaban prohibidas precisamente por su
+parecido con los «corchetes angulares»).  También se ven los
+«corchetes angulares» con algún tratamiento tipográfico, como
+reducción de tamaño y desplazamiento hacia abajo.</p>
+
+<p>De optarse por los <strong>espacios</strong>, que es otra de las posibilidades 
+del estándar, el que sigue a la <span class="caps">URL</span> hay que ajustarlo según la 
+fuente: puede ser un espacio ordinario, pero lo normal es que si le 
+sigue un signo de puntuación sea algo mayor, para que se aprecie con 
+claridad. El que precede a la <span class="caps">URL</span> es un espacio normal.</p>
+
+<h2>Notas</h2>
+
+<p id="fn1" class="footnote">1. <a href="#fnref1"><b>^</b></a>  La ese minúscula para formar el <a href="abbr.html">plural de la sigla</a>
+<span class="caps">URL</span> es intencionada.  Las Academias de la Lengua desaconsejan hacer
+este plural gráfico, pero no lo tachan de incorrecto y en textos 
+técnicos suele ser necesario.</p>
+
+<p>
+ </div>
+ <div class="extra"></p>
+
+<h2>Más&#8230;</h2>
+
+<p><img src="images/libronotac.jpg" style="display: block; margin: 0 auto;" title="Portada del libro" alt="Portada del libro" /></p>
+
+<ul>
+<li><a href="notaciones_cientificas.html">Tipografía y notaciones científicas</a></li>
+<li><a href="uso_cursivas.html">Uso de la cursiva</a></li>
+<li><a href="uso_redondas.html">Uso de la redonda</a></li>
+<li><a href="uso_minusculas_mayusculas.html">Uso de las minúsculas y mayúsculas</a></li>
+<li><a href="estructura_breves.html">Breves: asterisco, palabras compuestas, Courier, Times</a></li>
+<li><a href="abbr.html">Las abreviaciones: siglas, abreviaturas, símbolos&#8230;</a></li>
+<li><a href="ortografia_notaciones.html">Las notaciones científicas en la Ortografía académica</a></li>
+</ul>
+
+<h2>En <span class="caps">PDF</span></h2>
+
+<ul>
+<li><a href="archive/ortomatem.pdf">Ortotipografía y notaciones matemáticas</a></li>
+<li><a href="archive/ortocomp.pdf">Ortotipografía de programas informáticos</a></li>
+<li><a href="archive/bibliografia-iso.pdf">Bibliografías y su ortotipografía, según la <span class="caps">ISO</span> 690:2010</a></li>
+</ul>
+
+
+
+</div>
+<div class="toc">
+
+<form method="get" action="http://www.google.com/search">
+<p class="credits">
+<a href="http://www.google.com/">
+ <img src="http://www.google.com/logos/Logo_25wht.gif"
+ alt="Google" />
+</a><br />
+Buscar en este sitio:<br />
+<input type="text" name="q" size="15" maxlength="255" value="" />
+<input type="hidden" name="sitesearch" value="www.texnia.com" />
+<input type="submit" name="btnG" value="Buscar" />
+</p></form>
+<p class="credits">
+<a title="Compartir en digg"
+href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fwww.texnia.com%2Fdivision_url.html&amp;title=Ortotipografía de las URLs">
+<img alt="Compartir en digg" src="images/digg.png"/></a>
+<a title="Compartir en Googlebookmark"
+href="http://www.google.com/bookmarks/mark?op=add&amp;bkmk=http%3A%2F%2Fwww.texnia.com%2Fdivision_url.html&amp;title=Ortotipografía de las URLs">
+<img alt="Compartir en Googlebookmark" src="images/Googlebookmark.png"/></a>
+<a title="Compartir en Yahoo"
+href="http://myweb2.search.yahoo.com/myresults/bookmarklet?&amp;u=http%3A%2F%2Fwww.texnia.com%2Fdivision_url.html&amp;title=Ortotipografía de las URLs">
+<img alt="Compartir en Yahoo" src="images/Yahoo.png"/></a>
+<a title="Compartir en facebook"
+href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.texnia.com%2Fdivision_url.html&amp;t=Ortotipografía de las URLs">
+<img alt="Compartir en facebook" src="images/facebook.png"/></a>
+<a title="Compartir en meneame"
+href="http://meneame.net/submit.php?url=http%3A%2F%2Fwww.texnia.com%2Fdivision_url.html&amp;title==Ortotipografía de las URLs">
+<img alt="Compartir en meneame" src="images/meneame.png"/></a>
+</p>
+<p class="credits">
+<a href="http://www.amazon.com/exec/obidos/registry/DI5KTY76JLA1/">
+<img src="images/amazon2.gif" alt="Wish List" width="80" height="15" />
+</a></p>
+<p class="credits">
+Traducir<br /><ul style="text-align:left;">
+
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=de&amp;u=http%3A%2F%2Fwww.texnia.com%2Fdivision_url.html">Deutsch</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=en&amp;u=http%3A%2F%2Fwww.texnia.com%2Fdivision_url.html">English</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=fr&amp;u=http%3A%2F%2Fwww.texnia.com%2Fdivision_url.html">Fran&ccedil;ais</a></li>
+</ul></p>
+<p class="credits">
+&#169; 2000-2021<br />Javier Bezos<br />All Rights Reserved</p>
+
+</div>
+</div>
+</div>
+<!---------------------- -->
+<div id="container">
+  <nav class="top">
+    <ul>
+      <li><a id="mainlink" href="index.html">&#8962</a></li>
+      <!-- -->
+      <li><a href="#">Libro</a>
+      <ul>
+        <li><a href="notaciones_libro.html">Sobre <i>Tipografía y notaciones científicas</i></a></li>
+        <li><a href="dna_simbolo.html">&#191;Es <span class="caps">DNA</span> un s&iacute;mbolo internacional?</a></li>
+        <li><a href="simbolo_division.html">El s&iacute;mbolo de divisi&oacute;n</a></li>
+        <li><a href="marca_decimal.html">La marca decimal</a></li>
+        <li><a href="mol_definiciones.html">El mol: definici&oacute;n en varios diccionarios</a></li>
+        <li><a href="plural_unidades.html">El plural de nombres de unidades</a></li>
+        <li><a href="referencia_bibliografia.html">Referencias seg&uacute;n la ISO</a></li>
+        <li><a href="siglas_bibliograficas.html">Siglas bibliogr&aacute;ficas</a></li>
+        <li><a href="division_url.html">Ortotipograf&iacute;a de las URLs</a></li>
+        <li><a href="rae_estandares.html">La <span class="caps">RAE</span> y los est&aacute;ndares internacionales</a></li>
+        <!-- <li><a
+        href="dpd_simbolo.html">&#171;S&iacute;mbolo&#187; en el Panhisp&aacute;nico</a></li>-->
+        <li><a href="notaciones_cientificas.html">M&aacute;s&#8230;</a></li>
+      </ul></li>
+      <!-- -->
+      <li><a href="#">LaTeX</a>
+      <ul>
+        <li><a href="#">Packages</a>
+        <ul>
+          <li><a href="titlesec.html">titlesec</a></li>
+          <li><a href="titleps.html">titleps</a></li>
+          <li><a href="enumitem.html">enumitem</a></li>
+          <li><a href="spanish.html" title="babel">spanish</a></li>
+          <li><a href="tensind.html">tensind</a></li>
+          <li><a href="colorspace.html">colorspace</a></li>
+          <li><a href="accents.html">accents</a></li>
+          <li><a href="babel_news.html">babel</a></li>
+          <li><a href="esindex.html">esindex</a></li>
+        </ul>
+        <li><a href="articles.html">Artículos</a></li>
+        <li><a href="samples.html">Muestras</a></li>
+        <li><a href="notaciones.html">Notaciones</a></li>
+        <li><a href="xml.html">XML</a></li>
+        <li><a href="more.html">Más sobre TEX</a></li>
+      </ul>        
+      </li>
+      <!-- -->
+      <li><a href="#">Tipografía y estilo</a>
+      <ul>
+        <li><a href="ortotypo.html">Ortotipografía</a></li>
+        <li><a href="translit.html">Transliteraciones</a></li>
+        <li><a href="referencia_bibliografia.html">Bibliografías</a></li>
+        <li><a href="uso_minusculas_mayusculas.html">Minúsculas</a></li>
+        <li><a href="uso_cursivas.html">Cursivas</a></li>
+        <li><a href="ortotipografia_estilo.html">Más...</a>
+      </ul>
+      </li>
+      <!-- <li><a href="other.html">Miscelánea</a></li> -->
+      <li><a id="contactlink" href="contact.html">&#9993</a></li>
+    </ul>
+  </nav>
+</div>
+<!---------------------- -->
+<div class="foot"><p>© 2000-2021 Javier Bezos</p></div>
+</body>
+</html>

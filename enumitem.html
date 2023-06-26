@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+<title>Enumitem package for LaTeX | TeXnia</title>
+<meta http-equiv="content-language" content="es" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+
+
+<link href="texytipo.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<div class="page">
+<div class="head">
+ <a href="http://www.texnia.com/">
+  <img src="images/texnia.png" alt="logo"/>
+ </a>
+ <a href="http://www.twitter.com/javier_bezos" style="float: right;">
+  <img style="margin: 6px 3px 0 0;" src="images/twitter64.png" alt="logo"/>
+ </a>
+</div>
+<div class="subhead"></div>
+<div class="article">
+<div class="body">
+
+<h1>Enumitem package for LaTeX</h1>
+
+
+<small><i>Updated: 2011&#45;09&#45;29</i></small>
+
+<p>A package to customize the three basic lists (enumerate, itemize and
+description) by means of a set of parameters. It provides most of the
+flexibility you may want to design your own lists:</p>
+
+<ul>
+<li>fancy labels and fancy refs,</li>
+<li>leftmargin, labelsep, labelwidth anf the like automatically set,</li>
+<li>changes applied globally or only in one of the three types or even
+  in a single list (including topsep) by means of a sort of
+  &quot;inheritance&quot;,</li>
+<li>inline lists,</li>
+<li>several description styles,</li>
+<li>starting value and resuming the counter,</li>
+<li>trivlists properly formatted,</li>
+<li>control on page breaking,</li>
+<li>gathering of lists to be treated like a unit,</li>
+<li>lists as paragraphs.</li>
+</ul>
+
+<h2>Free downloads</h2>
+
+<ul>
+<li><a href="http://www.ctan.org/tex-archive/macros/latex/contrib/enumitem/">Download page for
+  enumitem</a>.
+  Version 3.5.2 of the package.</li>
+<li><a href="archive/enumitem.pdf">enumitem.pdf</a>. Manual (<span class="caps">PDF</span>, 330 KiB).</li>
+</ul>
+
+<h2>Bugs and known problems</h2>
+
+<p class="report request"><b>Feature request:</b> <code>widest</code> for all lists<br />
+<b>Sent by:</b> Ulrike Fischer (2013-03-19)<br />
+<b>Status:</b> Pending</p>
+
+<p>Please enable the <code>widest</code> key also for the itemize and
+description list.</p>
+
+<p class="report released"><b>Bug:</b> <code>\setlist</code> doesn&#8217;t work<br />
+<b>Sent by:</b> Marco Daniel (2011-09-11)<br />
+<b>Status:</b> Closed (released)</p>
+
+<p>It doesn&#8217;t check correctly the star.</p>
+
+<p class="report released"><b>Bug:</b> resume* only works once<br />
+<b>Sent by:</b> Richard Stanton  (2011-08-30)<br />
+<b>Status:</b> Closed (released)</p>
+
+<p>If <code>resume*</code> is used a second time, the numbers are correct, but not
+other settings.</p>
+
+<p class="report released"><b>Bug:</b> <code>nosep</code> in tables<br />
+<b>Sent by:</b> Sven (2011-08-16)<br />
+<b>Status:</b> Closed (not a bug)</p>
+
+<p>The option <code>nosep</code> does not always work: I have a table and put an
+enumeration in one of the cells. In this case, there is a vertical
+space before the first item.</p>
+
+<p>Here is a minimal example:</p>
+
+<p><pre>
+<span class="ltm">\documentclass</span><span class="ltb">[</span>12pt<span class="ltb">]</span><span class="ltb">{</span>scrreprt<span class="ltb">}</span>
+<span class="ltm">\usepackage</span><span class="ltb">[</span>ansinew<span class="ltb">]</span><span class="ltb">{</span>inputenc<span class="ltb">}</span>
+<span class="ltm">\usepackage</span><span class="ltb">{</span>enumitem<span class="ltb">}</span>
+<span class="ltm">\begin</span><span class="ltb">{</span>document<span class="ltb">}</span>
+<span class="ltm">\begin</span><span class="ltb">{</span>tabular<span class="ltb">}</span><span class="ltb">{</span>lp<span class="ltb">{</span>5cm<span class="ltb">}</span><span class="ltb">}</span>
+test1 &amp;test2<span class="ltm">\\</span>
+<span class="ltm">\hline</span>
+test3 &amp;<span class="ltm">\begin</span><span class="ltb">{</span>enumerate<span class="ltb">}</span><span class="ltb">[</span>leftmargin=*,nosep<span class="ltb">]</span>
+        <span class="ltm">\item</span> item1
+        <span class="ltm">\item</span> item2
+    <span class="ltm">\end</span><span class="ltb">{</span>enumerate<span class="ltb">}</span><span class="ltm">\\</span>
+<span class="ltm">\end</span><span class="ltb">{</span>tabular<span class="ltb">}</span>
+<span class="ltm">\end</span><span class="ltb">{</span>document<span class="ltb">}</span>
+</pre></p>
+
+<p><strong>Answer</strong> You have to put the list inside a minipage (this is the
+default behaviour of lists in cells). Not having to use minipage would
+be nice, of course, and I&#8217;ll investigate how to do it.</p>
+
+<p class="report released"><b>Bug:</b> incompatibility with powerdot<br />
+<b>Sent by:</b> Author (2011-04-01)<br />
+<b>Status:</b> Closed (not a bug)</p>
+
+<p>Powerdot relies in an few internal macros of enumitem which are not
+available in enumitem 2.0 and later. You can put in the preamble:</p>
+
+<p><pre>
+  <span class="ltm">\makeatletter</span>
+  <span class="ltm">\expandafter</span><span class="ltm">\setlist</span><span class="ltm">\expandafter</span><span class="ltb">{</span><span class="ltm">\enit@list</span><span class="ltb">}</span>
+  <span class="ltm">\makeatother</span>
+</pre></p>
+
+<p>and with this it works again. Further, since it uses a &#8220;public&#8221; macro,
+the compatibility is ensured. Very likely, putting the four
+assignments (list and the three lists) in <code>\AtBeginDocument</code> will fix
+the problem as a quick & dirty trick. Anyway, to be fixed in powerdot
+(I&#8217;m not sure it has been done).</p>
+
+<p class="report request"><b>Feature request:</b> Puntuación en description<br />
+<b>Sent by:</b> Juan José Torrens (2011-03-30)<br />
+<b>Status:</b> Pending</p>
+
+<p>Provide a way to add punctuacion after the label in description.</p>
+
+<p class="report released"><b>Feature request:</b> Robust <code>\AddToEnumerateCounter</code><br />
+<b>Sent by:</b> F Chervet (2011-03-15)<br />
+<b>Status:</b> Closed (released)</p>
+
+<p>Currently <code>\AddEnumerateCounter</code> requires the arguments to be fully 
+expandable, but often it&#8217;s convenient to use macros which are not
+fully expandable (fragile or protected). </p>
+
+<p class="report released"><b>Bug:</b> With @align=left2 the label may overlap the text<br />
+<b>Sent by:</b> F Chervet (2011-03-15)<br />
+<b>Status:</b> Closed (released)</p>
+
+<p><code>makelabel</code> is not properly defined (it assumes the labelwidth has been 
+set to the max width, which is not always the case).</p>
+
+<p class="report released"><b>Feature request:</b> fullwidth<br />
+<b>Sent by:</b> Henning Heinze (2011-02-22)<br />
+<b>Status:</b> Closed (released)</p>
+
+<p>Indented labels with fullwidth, as done sometimes in Brasil.</p>
+
+<p class="report released"><b>Bug:</b> <code>leftmargin=*</code> cannot be overriden<br />
+<b>Sent by:</b> Francois Lafont (2011-01-24)<br />
+<b>Status:</b> Closed (released)</p>
+
+<p>If <code>leftmargin=*</code> is set in setlist, an explicit fixed leftmargin is
+ignored in lists.</p>
+
+<p><em>[More info on bugs (all fixed) and changes soon.  Reporters were:
+Martin Staffa, Peter Zimmermann, Leo Liu, Sven, Marcin Borkowski,
+Ulrike Fischer, Frank Mrusek, and, of course, Lars Madsen.]</em></p>
+
+<p>
+ </div>
+ <div class="extra"></p>
+
+<h2>A present?</h2>
+
+<p>The packages listed here are <strong>free</strong> &#8211; you don&#8217;t have to pay
+anything to use them. However, if you have found them
+useful enough as to give me a little present, I would be very
+grateful. Just go to the following
+<a href="http://www.amazon.com/exec/obidos/registry/DI5KTY76JLA1/">wish
+list</a> at Amazon.</p>
+
+<h2>Donate</h2>
+
+<p>You might consider supporting the development of these packages with a
+donation, too.</p>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----MIIHLwYJKoZIhvcNAQcEoIIHIDCCBxwCAQExggEwMIIBLAIBADCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwDQYJKoZIhvcNAQEBBQAEgYAFxTEnKpeCFamFCnNBn211VmuqAi7/K8GUi1t/3UYCadKjWU+3jor8Awgd1XFLMIzCJmLeOqkrdcRVCZ0uSxvFi0bEDIfD+QumcPwfFCB5XFNQt9xNRsAnkaU1f3dyXEMcm+6JpmzRZT5n1idE2KAt9chOWdPEiGUBFQLd+N6A5TELMAkGBSsOAwIaBQAwgawGCSqGSIb3DQEHATAUBggqhkiG9w0DBwQIhibo8O3p9B2AgYhjst5t7n4WLMdPWwLPNvhrbv5h7a1nF2XxcHQ3A62aje+nPbhVPK9XXsJftk4/CZuf0hR7A0ehCEWaQBMTw5nFRfvnVjqS81w6/deAXVyDKa3OyGL9RGABFajBuXcPICC/nBciuDFIlXjf9SGUouT34eh79NFggBjl7tv6fjlC1TtyhPMZ686ZoIIDhzCCA4MwggLsoAMCAQICAQAwDQYJKoZIhvcNAQEFBQAwgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tMB4XDTA0MDIxMzEwMTMxNVoXDTM1MDIxMzEwMTMxNVowgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDBR07d/ETMS1ycjtkpkvjXZe9k+6CieLuLsPumsJ7QC1odNz3sJiCbs2wC0nLE0uLGaEtXynIgRqIddYCHx88pb5HTXv4SZeuv0Rqq4+axW9PLAAATU8w04qqjaSXgbGLP3NmohqM6bV9kZZwZLR/klDaQGo1u9uDb9lr4Yn+rBQIDAQABo4HuMIHrMB0GA1UdDgQWBBSWn3y7xm8XvVk/UtcKG+wQ1mSUazCBuwYDVR0jBIGzMIGwgBSWn3y7xm8XvVk/UtcKG+wQ1mSUa6GBlKSBkTCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb22CAQAwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOBgQCBXzpWmoBa5e9fo6ujionW1hUhPkOBakTr3YCDjbYfvJEiv/2P+IobhOGJr85+XHhN0v4gUkEDI8r2/rNk1m0GA8HKddvTjyGw/XqXa+LSTlDYkqI8OwR8GEYj4efEtcRpRYBxV8KxAW93YDWzFGvruKnnLbDAF6VR5w/cCMn5hzGCAZowggGWAgEBMIGUMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbQIBADAJBgUrDgMCGgUAoF0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMDkwNzMxMTI0ODQ4WjAjBgkqhkiG9w0BCQQxFgQUHgBhUF1QLdCbwFNbPJBtmn6JoL8wDQYJKoZIhvcNAQEBBQAEgYBaCXvWxtpnzOrYQi0KlqZbA71GC0d4lpU9m7kUwBJqoFtLKgKnjd+2cELqJyI7TELmulLzCeD+4ecKUONK2Q+2pruPoYhRvwqctiKL2sBF1mHj5olC3I5rpLroXZLqynCOjTNVIVxARrjJl0XTm2X7CR1eVxPAztQtvdcnFe+OQQ==-----END PKCS7-----">
+<input type="image" src="images/paypalgreen.png" border="0" name="submit" alt="PayPal. La forma r&aacute;pida y segura de pagar en Internet.">
+<img alt="" border="0" src="https://www.paypal.com/es_ES/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+
+</div>
+<div class="toc">
+
+<form method="get" action="http://www.google.com/search">
+<p class="credits">
+<a href="http://www.google.com/">
+ <img src="http://www.google.com/logos/Logo_25wht.gif"
+ alt="Google" />
+</a><br />
+Buscar en este sitio:<br />
+<input type="text" name="q" size="15" maxlength="255" value="" />
+<input type="hidden" name="sitesearch" value="www.texnia.com" />
+<input type="submit" name="btnG" value="Buscar" />
+</p></form>
+<p class="credits">
+<a title="Compartir en digg"
+href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fwww.texnia.com%2Fenumitem.html&amp;title=Enumitem package for LaTeX">
+<img alt="Compartir en digg" src="images/digg.png"/></a>
+<a title="Compartir en Googlebookmark"
+href="http://www.google.com/bookmarks/mark?op=add&amp;bkmk=http%3A%2F%2Fwww.texnia.com%2Fenumitem.html&amp;title=Enumitem package for LaTeX">
+<img alt="Compartir en Googlebookmark" src="images/Googlebookmark.png"/></a>
+<a title="Compartir en Yahoo"
+href="http://myweb2.search.yahoo.com/myresults/bookmarklet?&amp;u=http%3A%2F%2Fwww.texnia.com%2Fenumitem.html&amp;title=Enumitem package for LaTeX">
+<img alt="Compartir en Yahoo" src="images/Yahoo.png"/></a>
+<a title="Compartir en facebook"
+href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.texnia.com%2Fenumitem.html&amp;t=Enumitem package for LaTeX">
+<img alt="Compartir en facebook" src="images/facebook.png"/></a>
+<a title="Compartir en meneame"
+href="http://meneame.net/submit.php?url=http%3A%2F%2Fwww.texnia.com%2Fenumitem.html&amp;title==Enumitem package for LaTeX">
+<img alt="Compartir en meneame" src="images/meneame.png"/></a>
+</p>
+<p class="credits">
+<a href="http://www.amazon.com/exec/obidos/registry/DI5KTY76JLA1/">
+<img src="images/amazon2.gif" alt="Wish List" width="80" height="15" />
+</a></p>
+<p class="credits">
+Traducir<br /><ul style="text-align:left;">
+
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=de&amp;u=http%3A%2F%2Fwww.texnia.com%2Fenumitem.html">Deutsch</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=en&amp;u=http%3A%2F%2Fwww.texnia.com%2Fenumitem.html">English</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=fr&amp;u=http%3A%2F%2Fwww.texnia.com%2Fenumitem.html">Fran&ccedil;ais</a></li>
+</ul></p>
+<p class="credits">
+&#169; 2000-2021<br />Javier Bezos<br />All Rights Reserved</p>
+
+</div>
+</div>
+</div>
+<!---------------------- -->
+<div id="container">
+  <nav class="top">
+    <ul>
+      <li><a id="mainlink" href="index.html">&#8962</a></li>
+      <!-- -->
+      <li><a href="#">Libro</a>
+      <ul>
+        <li><a href="notaciones_libro.html">Sobre <i>Tipografía y notaciones científicas</i></a></li>
+        <li><a href="dna_simbolo.html">&#191;Es <span class="caps">DNA</span> un s&iacute;mbolo internacional?</a></li>
+        <li><a href="simbolo_division.html">El s&iacute;mbolo de divisi&oacute;n</a></li>
+        <li><a href="marca_decimal.html">La marca decimal</a></li>
+        <li><a href="mol_definiciones.html">El mol: definici&oacute;n en varios diccionarios</a></li>
+        <li><a href="plural_unidades.html">El plural de nombres de unidades</a></li>
+        <li><a href="referencia_bibliografia.html">Referencias seg&uacute;n la ISO</a></li>
+        <li><a href="siglas_bibliograficas.html">Siglas bibliogr&aacute;ficas</a></li>
+        <li><a href="division_url.html">Ortotipograf&iacute;a de las URLs</a></li>
+        <li><a href="rae_estandares.html">La <span class="caps">RAE</span> y los est&aacute;ndares internacionales</a></li>
+        <!-- <li><a
+        href="dpd_simbolo.html">&#171;S&iacute;mbolo&#187; en el Panhisp&aacute;nico</a></li>-->
+        <li><a href="notaciones_cientificas.html">M&aacute;s&#8230;</a></li>
+      </ul></li>
+      <!-- -->
+      <li><a href="#">LaTeX</a>
+      <ul>
+        <li><a href="#">Packages</a>
+        <ul>
+          <li><a href="titlesec.html">titlesec</a></li>
+          <li><a href="titleps.html">titleps</a></li>
+          <li><a href="enumitem.html">enumitem</a></li>
+          <li><a href="spanish.html" title="babel">spanish</a></li>
+          <li><a href="tensind.html">tensind</a></li>
+          <li><a href="colorspace.html">colorspace</a></li>
+          <li><a href="accents.html">accents</a></li>
+          <li><a href="babel_news.html">babel</a></li>
+          <li><a href="esindex.html">esindex</a></li>
+        </ul>
+        <li><a href="articles.html">Artículos</a></li>
+        <li><a href="samples.html">Muestras</a></li>
+        <li><a href="notaciones.html">Notaciones</a></li>
+        <li><a href="xml.html">XML</a></li>
+        <li><a href="more.html">Más sobre TEX</a></li>
+      </ul>        
+      </li>
+      <!-- -->
+      <li><a href="#">Tipografía y estilo</a>
+      <ul>
+        <li><a href="ortotypo.html">Ortotipografía</a></li>
+        <li><a href="translit.html">Transliteraciones</a></li>
+        <li><a href="referencia_bibliografia.html">Bibliografías</a></li>
+        <li><a href="uso_minusculas_mayusculas.html">Minúsculas</a></li>
+        <li><a href="uso_cursivas.html">Cursivas</a></li>
+        <li><a href="ortotipografia_estilo.html">Más...</a>
+      </ul>
+      </li>
+      <!-- <li><a href="other.html">Miscelánea</a></li> -->
+      <li><a id="contactlink" href="contact.html">&#9993</a></li>
+    </ul>
+  </nav>
+</div>
+<!---------------------- -->
+<div class="foot"><p>© 2000-2021 Javier Bezos</p></div>
+</body>
+</html>

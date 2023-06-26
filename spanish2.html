@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+<title>Decisiones en spanish para babel | TeXnia</title>
+<meta http-equiv="content-language" content="es" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+
+
+<link href="texytipo.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<div class="page">
+<div class="head">
+ <a href="http://www.texnia.com/">
+  <img src="images/texnia.png" alt="logo"/>
+ </a>
+ <a href="http://www.twitter.com/javier_bezos" style="float: right;">
+  <img style="margin: 6px 3px 0 0;" src="images/twitter64.png" alt="logo"/>
+ </a>
+</div>
+<div class="subhead"></div>
+<div class="article">
+<div class="body">
+
+<h1>Decisiones en spanish para babel</h1>
+
+
+<small><i>Revisado: 2016-03-17</i></small>
+
+<p>Algunas de las decisiones tomadas en el estilo para español causan
+cierta sorpresa y a menudo se pregunta por qué spanish ha decidido
+alterar el comportamiento de lo que se considera el estilo estándar de
+LaTEX. La razón en todas es simple: se trata de adaptar LaTEX a las
+convenciones ortotipográficas hispanas, lo que conlleva eliminar
+aquellos aspectos que más claramente evidencian la influencia de las
+normas angloamericanas en las que basan los estilos estándar y otros
+muchos. Igual que cada lengua tiene su ortografía, también tiene su
+ortotipografía.</p>
+
+<p>Ciertos puntos estilísticos dependen, en realidad, del diseño del
+libro, pero es claro que el punto de partida (los ajustes
+predeterminados sobre los que crear ese diseño) ha de ser un estilo
+conforme a las reglas más habituales y tradicionales en español. El
+estilo spanish ofrece muchas posibilidades de reconfiguración (puede
+que sea una de las lenguas de babel más abiertas en este aspecto), por
+lo que los ajustes necesarios para un cierto estilo pueden llevarse a
+cabo con relativa facilidad, como se explica en el manual y en:</p>
+
+<ul>
+<li><a href="spanishopt.html">Opciones de paquete de spanish</a>.</li>
+</ul>
+
+<h2>Traducción de <em>table</em> como <em>cuadro</em></h2>
+
+<p>A pesar de su similitud, el inglés <em>table</em> no es el español <em>tabla</em>
+(se trata de <em>falsos amigos</em>, es decir, palabras similares en dos
+lenguas pero con significados distintos). Las definiciones de Academia
+de estas palabras son:</p>
+
+<p><em>Cuadro:</em> Conjunto de nombres cifras u otros datos presentados
+gráficamente de forma que se advierta la relación existente entre
+ellos.</p>
+
+<p><em>Tabla:</em> Cuadro o catálogo de números de especie determinada,
+dispuestos en forma adecuada para facilitar los cálculos.</p>
+
+<p>Tradicionalmente, y aún sigue siendo una costumbre mayoritaria, el
+nombre empleado en español para las partes de un libro o un texto que
+muestran datos de forma gráfica es <em>cuadro</em>, como queda reflejado en
+las obras de tipografía de Morato, Martínez Sicluna o Martínez de
+Sousa. Como se puede ver de la definición, una tabla es un tipo de
+cuadro. En cierto modo, se puede decir que cuadro es a tabla lo que en
+LaTEX table es a tabular, por lo que un libro puede contener un cuadro
+que sea, digamos, la tabla de multiplicar. O dicho en otras palabras:
+<em>cuadro</em> va a la función y <em>tabla</em> a una cierta disposición.</p>
+
+<p>La creencia de que <em>cuadro</em> no es más que una forma marginal y
+desusada se da sobre todo en matemáticas, física e informática por una
+razón doble: muchos cuadros son tablas y la influencia del inglés es
+muy notable. En ciencias sociales o de la vida y en obras de
+referencia la forma predominante sigue siendo la tradicional en
+español, es decir, <em>cuadro</em>. A pocas personas de historia se les
+ocurriría, por ejemplo, hablar de una tabla con la dinastía de los
+Austrias. Aunque Google no demuestra nada, puede ser ilustrativo: a
+2007&#45;03&#45;17 y en páginas en español, &quot;cuadro 20&quot; da
+91.100 resultados y &quot;tabla 20&quot; da 66.500.</p>
+
+<h2>Números romanos en versalitas</h2>
+
+<p>Aunque si retrocedemos varios siglos podemos encontrar números romanos
+en minúsculas en textos españoles, en los siglos <span class="caps">XVIII</span> y <span class="caps">XIX</span>, cuando
+se fijó buena parte de la actual ortotipografía, los números romanos
+en minúsculas desaparecieron para dar paso a los números en
+versalitas, es decir, letras con la forma de las mayúsculas y de
+tamaño similar a las minúsculas.</p>
+
+<p>El <em>Diccionario panhispánico de dudas</em> de las Academias de la Lengua
+(2005), sanciona las versalitas en los números romanos y censura las
+minúsculas: «Aunque en texto antiguos se usaban a veces las letras
+minúsculas paras representar lo números romanos, hoy deben utilizarse
+letras con forma mayúscula. Cuando se refieran a sustantivos escritos
+en minúscula, se recomienda escribirlos en versalitas» (<em>números</em>,
+3.1_a_).</p>
+
+<p>La Ortografía del 2010 de nuevo cambia de criterio (el tercero en poco
+más de un decenio años, pues en 1999 tenía otro) y considera admisible
+las minúsculas en los textos jurídicos y científicos (p. 657), pero no
+en otros casos, por lo que la norma general, que es la aplicable en un
+estilo estándar, se mantiene: la minúscula es tan falta de ortografía
+como, por ejemplo, tras punto.</p>
+
+<p>Buena parte de la culpa de este anglicismo, las cosas como son, la
+tiene LaTEX. En libros de matemáticas anteriores a los años sesenta y
+setenta es difícil encontrar esta práctica, pero los matemáticos, en
+textos más recientes, lo usan porque así viene en LaTEX, siguiendo los
+convenios el inglés americano.</p>
+
+<h2>Marca decimal</h2>
+
+<p>Tal vez una de las funciones de la versión 4 que más apoyo recibió y
+que al tiempo es una de las más controvertidas. Al cargar spanish, el
+punto en una fórmula se interpreta como un marcador decimal genérico,
+de manera que puede adoptar la forma de punto o de coma sin apenas
+cambios en el documento.</p>
+
+<p>El objetivo de esta marca decimal genérica es doble:</p>
+
+<p>1. No hay unidad sobre la marca decimal en el mundo hispanohablante,
+pues la coma es habitual en España y Cono Sur, mientras que el punto
+es más frecuente en México y los países del Caribe.</p>
+
+<p>2. La coma tiene una función asignada en matemáticas como separador en
+enumeraciones, mientras que el punto no tiene usos reales en español
+(recordemos que los miles deben separarse con espacios finos). Como la
+coma en su función principal no sirve para el decimal, ya que añade un
+espacio detrás, se puede hacer que el punto sea una marca decimal
+genérica y que se comporte correctamente como tal, sea cual sea el
+signo elegido.</p>
+
+<p>No sería el primer caso que LaTeX dé un comportamiento como el que da
+spanish al punto: por ejemplo, el apóstrofo en matemáticas no da ese
+carácter, sino que se convierte en una prima.</p>
+
+<p>El hecho de que la marca decimal sea única y que funcione como marcado
+lógico y no visual, ayuda al intercambio de documentos de un país a
+otro cuando tengan diferentes prácticas al respecto, y la elección del
+punto ha resultado ser especialmente adecuada, pues Ortografía del
+2010 claramente apuesta por el punto como signo para los decimales.</p>
+
+<h2>Apartados</h2>
+
+<p>La primera versión del actual spanish (por entonces llamado spanishb),
+establecía itemize con rayas, que es lo más habitual. Sin embargo,
+dado que se objetó que la raya puede confundirse con el menos, se
+cambió a otro esquema basado en topos que evitaba la semirraya (signo
+ajeno al español) y el punto centrado.</p>
+
+<p>El esquema actual es en buena medida arbitrario, como también lo es el
+original de LaTEX, pero al menos se evitan las idiosincrasias
+originales, extrañas incluso en inglés. Un último paso se dio con un
+esquema alternativo, ya que el cuadradito del primer nivel no ha sido
+del agrado de algunos usuarios del estilo.</p>
+
+<h2>Traducciones de los índices</h2>
+
+<p>Por desgracia, no existe un referencia mínimamente oficial que
+facilite una terminología unificada. Por ejemplo, <em>índice de materias</em>
+lo usan algunos para el sumario de capítulos, mientras que otros lo
+aplican al índice alfabético final; por ello la he descartado. El <span class="caps">DRAE</span>
+dice que <em>tabla</em> es el «índice de materias en los libros» aunque
+modernamente no ha tenido uso alguno (sólo antiguamente) ni tampoco
+aclara más. También es arcaico <em>tabla de contenido</em>, aunque la fórmula
+más escueta de <em>contenido</em> me parece mejor.</p>
+
+<p>En todo caso, no debería ser <em>de contenidos</em> (en plural), que es un
+crudo anglicismo. Tal vez <em>índice general</em> es lo que más se usa, así
+que a él me atengo salvo en article, donde se compone como sección y
+por tanto resulta algo ostentoso. (Al contrario que en inglés, en
+castellano el índice por antonomasia es el general.) Otras
+posibilidades serían <em>índice temático</em> o <em>índice sumario</em>.</p>
+
+<p>Para el índice alfabético hay quien ha empleado <em>índice de materias</em>
+aunque parece que <em>índice analítico</em> tiene más seguidores. Pero
+estrictamente hablando, ninguno de los dos es apropiado, ya que estos
+índices no solamente suelen incluir materias, sino también
+nombres. Con un paquete para diferenciar varios tipos de índices
+podemos indicar si es de materias (<em>analítico</em>) o de nombres
+(<em>onomástico</em>). Creo que <em>índice alfabético</em> es ajustado y preciso y
+me parece lo mejor.</p>
+
+<p>Obsérvese igualmente el <a href="uso_minusculas_mayusculas.html">uso de las
+minúsculas</a> de modo predeterminado, que
+se corresponde con la práctica tradicional.</p>
+
+<p>
+ </div>
+ <div class="extra"></p>
+
+<h2>Sobre el autor</h2>
+
+<p>Soy básicamente un tipógrafo técnico y ortotipógrafo al que le
+apasiona la programación de computadoras y que procede del campo de
+las ciencias. He participado como autor en dos manuales de estilo (una
+radio y una empresa eléctrica), he escrito artículos para varias
+revistas de estilo y español (<em>Panacea, Donde dice&#8230;, Español
+Actual</em>), he publicado en Trea <em>Tipografía y notaciones científicas</em>,
+he coordinado la 19.ª edición del <em>Manual de español urgente</em> y
+colaboré con Real Academia Española en la edición del 2010 de la
+Ortografía.  He sido siete años miembro del jurado de la fase española
+del Concurso Hispanoamericano de Ortografía (2009-2015).</p>
+
+<h2>Sobre el estilo spanish</h2>
+
+<p>Para su desarrollo he tenido en cuenta las obras clásicas de
+tipografía (Morato, Martínez Sicluna, Ramos Martínez&#8230;) y he
+investigado en multitud de tratados científico&#45;técnicos y de
+otras materias para ver el uso real de las diferentes normas y
+términos aplicados en la práctica.</p>
+
+
+
+</div>
+<div class="toc">
+
+<form method="get" action="http://www.google.com/search">
+<p class="credits">
+<a href="http://www.google.com/">
+ <img src="http://www.google.com/logos/Logo_25wht.gif"
+ alt="Google" />
+</a><br />
+Buscar en este sitio:<br />
+<input type="text" name="q" size="15" maxlength="255" value="" />
+<input type="hidden" name="sitesearch" value="www.texnia.com" />
+<input type="submit" name="btnG" value="Buscar" />
+</p></form>
+<p class="credits">
+<a title="Compartir en digg"
+href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fwww.texnia.com%2Fspanish2.html&amp;title=Decisiones en spanish para babel">
+<img alt="Compartir en digg" src="images/digg.png"/></a>
+<a title="Compartir en Googlebookmark"
+href="http://www.google.com/bookmarks/mark?op=add&amp;bkmk=http%3A%2F%2Fwww.texnia.com%2Fspanish2.html&amp;title=Decisiones en spanish para babel">
+<img alt="Compartir en Googlebookmark" src="images/Googlebookmark.png"/></a>
+<a title="Compartir en Yahoo"
+href="http://myweb2.search.yahoo.com/myresults/bookmarklet?&amp;u=http%3A%2F%2Fwww.texnia.com%2Fspanish2.html&amp;title=Decisiones en spanish para babel">
+<img alt="Compartir en Yahoo" src="images/Yahoo.png"/></a>
+<a title="Compartir en facebook"
+href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.texnia.com%2Fspanish2.html&amp;t=Decisiones en spanish para babel">
+<img alt="Compartir en facebook" src="images/facebook.png"/></a>
+<a title="Compartir en meneame"
+href="http://meneame.net/submit.php?url=http%3A%2F%2Fwww.texnia.com%2Fspanish2.html&amp;title==Decisiones en spanish para babel">
+<img alt="Compartir en meneame" src="images/meneame.png"/></a>
+</p>
+<p class="credits">
+<a href="http://www.amazon.com/exec/obidos/registry/DI5KTY76JLA1/">
+<img src="images/amazon2.gif" alt="Wish List" width="80" height="15" />
+</a></p>
+<p class="credits">
+Traducir<br /><ul style="text-align:left;">
+
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=de&amp;u=http%3A%2F%2Fwww.texnia.com%2Fspanish2.html">Deutsch</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=en&amp;u=http%3A%2F%2Fwww.texnia.com%2Fspanish2.html">English</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=fr&amp;u=http%3A%2F%2Fwww.texnia.com%2Fspanish2.html">Fran&ccedil;ais</a></li>
+</ul></p>
+<p class="credits">
+&#169; 2000-2021<br />Javier Bezos<br />All Rights Reserved</p>
+
+</div>
+</div>
+</div>
+<!---------------------- -->
+<div id="container">
+  <nav class="top">
+    <ul>
+      <li><a id="mainlink" href="index.html">&#8962</a></li>
+      <!-- -->
+      <li><a href="#">Libro</a>
+      <ul>
+        <li><a href="notaciones_libro.html">Sobre <i>Tipografía y notaciones científicas</i></a></li>
+        <li><a href="dna_simbolo.html">&#191;Es <span class="caps">DNA</span> un s&iacute;mbolo internacional?</a></li>
+        <li><a href="simbolo_division.html">El s&iacute;mbolo de divisi&oacute;n</a></li>
+        <li><a href="marca_decimal.html">La marca decimal</a></li>
+        <li><a href="mol_definiciones.html">El mol: definici&oacute;n en varios diccionarios</a></li>
+        <li><a href="plural_unidades.html">El plural de nombres de unidades</a></li>
+        <li><a href="referencia_bibliografia.html">Referencias seg&uacute;n la ISO</a></li>
+        <li><a href="siglas_bibliograficas.html">Siglas bibliogr&aacute;ficas</a></li>
+        <li><a href="division_url.html">Ortotipograf&iacute;a de las URLs</a></li>
+        <li><a href="rae_estandares.html">La <span class="caps">RAE</span> y los est&aacute;ndares internacionales</a></li>
+        <!-- <li><a
+        href="dpd_simbolo.html">&#171;S&iacute;mbolo&#187; en el Panhisp&aacute;nico</a></li>-->
+        <li><a href="notaciones_cientificas.html">M&aacute;s&#8230;</a></li>
+      </ul></li>
+      <!-- -->
+      <li><a href="#">LaTeX</a>
+      <ul>
+        <li><a href="#">Packages</a>
+        <ul>
+          <li><a href="titlesec.html">titlesec</a></li>
+          <li><a href="titleps.html">titleps</a></li>
+          <li><a href="enumitem.html">enumitem</a></li>
+          <li><a href="spanish.html" title="babel">spanish</a></li>
+          <li><a href="tensind.html">tensind</a></li>
+          <li><a href="colorspace.html">colorspace</a></li>
+          <li><a href="accents.html">accents</a></li>
+          <li><a href="babel_news.html">babel</a></li>
+          <li><a href="esindex.html">esindex</a></li>
+        </ul>
+        <li><a href="articles.html">Artículos</a></li>
+        <li><a href="samples.html">Muestras</a></li>
+        <li><a href="notaciones.html">Notaciones</a></li>
+        <li><a href="xml.html">XML</a></li>
+        <li><a href="more.html">Más sobre TEX</a></li>
+      </ul>        
+      </li>
+      <!-- -->
+      <li><a href="#">Tipografía y estilo</a>
+      <ul>
+        <li><a href="ortotypo.html">Ortotipografía</a></li>
+        <li><a href="translit.html">Transliteraciones</a></li>
+        <li><a href="referencia_bibliografia.html">Bibliografías</a></li>
+        <li><a href="uso_minusculas_mayusculas.html">Minúsculas</a></li>
+        <li><a href="uso_cursivas.html">Cursivas</a></li>
+        <li><a href="ortotipografia_estilo.html">Más...</a>
+      </ul>
+      </li>
+      <!-- <li><a href="other.html">Miscelánea</a></li> -->
+      <li><a id="contactlink" href="contact.html">&#9993</a></li>
+    </ul>
+  </nav>
+</div>
+<!---------------------- -->
+<div class="foot"><p>© 2000-2021 Javier Bezos</p></div>
+</body>
+</html>

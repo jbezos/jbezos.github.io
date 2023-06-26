@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<title>Babel: news | TeXnia</title>
+<meta http-equiv="content-language" content="en" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="description" lang="en" content="Info on babel" />
+
+<link href="texytipo.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<div class="page">
+<div class="head">
+ <a href="http://www.texnia.com/">
+  <img src="images/texnia.png" alt="logo"/>
+ </a>
+ <a href="http://www.twitter.com/javier_bezos" style="float: right;">
+  <img style="margin: 6px 3px 0 0;" src="images/twitter64.png" alt="logo"/>
+ </a>
+</div>
+<div class="subhead"></div>
+<div class="article">
+<div class="body">
+
+<h1>Babel: news</h1>
+
+<p><b>This page is old. The current site for babel, the multilingual
+framework to localize LaTeX, LuaLaTeX and XeLaTeX, is <a
+href="https://latex3.github.io/babel/">here</a>.</b></p>
+
+<small><i>Updated: 2013-04-01</i></small>
+
+<p>Babel gets back on track and it is again actively maintained. Version
+3.9 was released on March 2013. Current version is 3.9b.</p>
+
+<p>See the
+<a href="http://mirrors.ctan.org/macros/latex/required/babel/base/README">README</a>
+ for basic info, and
+<a href="http://mirror.ctan.org/macros/latex/required/babel/base/babel.pdf">babel.pdf</a>
+for the full documentation.</p>
+
+<p>Starting with this version, babel has been separated in a core (or
+“base”) part, and contributed language-specific packages, which should
+be maintained by its contributors. In particular, it shall be no
+longer necessary to synchronize Babel core releases with releases of
+Babel language files. See 
+<a href="http://mirror.ctan.org/macros/latex/required/babel/base/CONTRIB">CONTRIB</a>
+for some guidelines on contributing languages.</p>
+
+<p>The core part is located in the <a href="http://mirror.ctan.org/macros/latex/required/babel">subdirectory
+base</a>, the contrib
+part is actually a link into CTAN&#8217;s macros/latex/contrib subtree.</p>
+
+<p>No attempt has be done to take full advantage of the features
+provided by XeTeX and LuaTeX, which would require a completely new
+core (as for example <a href="http://www.ctan.org/pkg/polyglossia">polyglossia</a>
+or as part of LaTeX3).</p>
+
+<p>The goals were:
+<ul>
+<li>Fixing bugs (lots).</li>
+<li>Modularity.  Only some Babel core files will be maintained by the
+  LaTeX team (and some volunteers), and all other language specific
+  stuff should be maintained by its contributors. This requires extra
+  mechanisms to prevent or at least to overcome incompatibilities.</li>
+<li>A minimal compatibility with XeTeX and LuaTeX.</li>
+<li>Hyphenation. Loading patterns on demand (for luatex); an
+  engine/package-independent hyphen.cfg (and if possible, more lightweight).</li>
+<li>Shorthands. More control on them, including the possibility to
+  deactivate them altogether.</li>
+<li>Encodings. Captions in multiple encodings (not only <span class="caps">LICR</span>, but also,
+  eg, utf8); better case handling; strings defined
+  independently from the switching machanism.</li>
+<li>Plain. Making changes compatible.</li>
+<li>Creating test files.</li>
+</ul></p>
+
+<p>Most of these goals have been fulfilled.</p>
+
+<p>Here is a list of most of the new and extended macros:
+<ul>
+<li><code>\usershorthands*</code> is like <code>\useshorthands</code> but it makes sure shorthands
+are always activated.</li>
+<li><code>\defineshorthands</code> can be used to (re)define system and language
+shorthands, and a new level for language dependent user shorthands
+is added, which takes precedence over “normal” user shorthands.</li>
+<li><code>\shorthandoff*</code> restores the original catcode or definition (useful
+with <code>~</code> and <code>^</code>).</li>
+<li><code>\AfterBabelLanguage</code> sets code to be executed at the end of the
+corresponding ldf file.</li>
+<li><code>\babelhyphen</code> inserts a hyphen (soft, hard, nobreak&#8230;).</li>
+<li><code>\babelhyphenation</code> is like <code>\hyphenation</code> but for all languages or
+specific ones.</li>
+<li><code>\AddBabelHook</code> sets code to be executed at some &#8220;events&#8221;
+(<code>\EnableBabelHook</code> and <code>\DisableBabelHook</code> control them).</li>
+</ul></p>
+
+<p>New package options:
+<ul>
+<li><code>shorthands</code> sets which language/system shorthands are allowed.</li>
+<li><code>safe</code> sets if bib and/or ref macros are redefined.</li>
+<li><code>config</code> sets a different config file.</li>
+<li><code>main</code> sets the main language.</li>
+<li><code>headfoot</code> sets the language in heads and foots.</li>
+<li><code>noconfigs</code>: <code>.cfg</code> files are not loaded.</li>
+<li><code>showlanguages</code> prints to the log file the languages loaded in the format.</li>
+<li><code>math</code> control if shorthands are also active in math mode.</li>
+</ul></p>
+
+<p>Formerly, <code>switch.def</code> was preloaded into the format, which made
+difficult to upgrade Babel. It is still preloaded, but now it is
+loaded always with the package (provided the version number is
+different).  As to <code>hyphen.cfg</code>, its behaviour is the same as in the
+previous versions, but now it saves a list of loaded languages and
+there are several hooks for XeTeX and LuaTeX.</p>
+
+<p>There is also a new file, <code>bbunicode.dtx</code>, which defines some hooks for
+Unicode engines.</p>
+
+<p>See also:</p>
+
+<ul>
+<li>Frank Mittelbach and Chris Rowley, <a href="http://latex-project.org/papers/language-tug97-paper-revised.pdf">Language Information in
+Structured Documents: A Model for Mark-up and
+Rendering</a></li>
+<li>Javier Bezos, <a href="http://www.tug.org/TUGboat/tb27-0/bezos.pdf">Mem. A multilingual package for LaTeX with
+Aleph</a></li>
+</ul>
+
+<p>
+ </div>
+ <div class="extra"></p>
+
+<h2>More</h2>
+
+<ul>
+<li><a href="incubator.html">The language incubator</a></li>
+<li><a href="babel_work.html">Current work</a></li>
+<li><a href="babel_past_2012_12.html">Past work</a></li>
+</ul>
+
+</div>
+<div class="toc">
+
+<form method="get" action="http://www.google.com/search">
+<p class="credits">
+<a href="http://www.google.com/">
+ <img src="http://www.google.com/logos/Logo_25wht.gif"
+ alt="Google" />
+</a><br />
+Buscar en este sitio:<br />
+<input type="text" name="q" size="15" maxlength="255" value="" />
+<input type="hidden" name="sitesearch" value="www.texnia.com" />
+<input type="submit" name="btnG" value="Buscar" />
+</p></form>
+<p class="credits">
+<a title="Compartir en digg"
+href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fwww.texnia.com%2Fbabel_news.html&amp;title=Babel: news">
+<img alt="Compartir en digg" src="images/digg.png"/></a>
+<a title="Compartir en Googlebookmark"
+href="http://www.google.com/bookmarks/mark?op=add&amp;bkmk=http%3A%2F%2Fwww.texnia.com%2Fbabel_news.html&amp;title=Babel: news">
+<img alt="Compartir en Googlebookmark" src="images/Googlebookmark.png"/></a>
+<a title="Compartir en Yahoo"
+href="http://myweb2.search.yahoo.com/myresults/bookmarklet?&amp;u=http%3A%2F%2Fwww.texnia.com%2Fbabel_news.html&amp;title=Babel: news">
+<img alt="Compartir en Yahoo" src="images/Yahoo.png"/></a>
+<a title="Compartir en facebook"
+href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.texnia.com%2Fbabel_news.html&amp;t=Babel: news">
+<img alt="Compartir en facebook" src="images/facebook.png"/></a>
+<a title="Compartir en meneame"
+href="http://meneame.net/submit.php?url=http%3A%2F%2Fwww.texnia.com%2Fbabel_news.html&amp;title==Babel: news">
+<img alt="Compartir en meneame" src="images/meneame.png"/></a>
+</p>
+<p class="credits">
+<a href="http://www.amazon.com/exec/obidos/registry/DI5KTY76JLA1/">
+<img src="images/amazon2.gif" alt="Wish List" width="80" height="15" />
+</a></p>
+<p class="credits">
+Traducir<br /><ul style="text-align:left;">
+
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=de&amp;u=http%3A%2F%2Fwww.texnia.com%2Fbabel_news.html">Deutsch</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=en&amp;u=http%3A%2F%2Fwww.texnia.com%2Fbabel_news.html">English</a></li>
+<li><a href="http://translate.google.es/translate?sl=es&amp;tl=fr&amp;u=http%3A%2F%2Fwww.texnia.com%2Fbabel_news.html">Fran&ccedil;ais</a></li>
+</ul></p>
+<p class="credits">
+&#169; 2000-2021<br />Javier Bezos<br />All Rights Reserved</p>
+
+</div>
+</div>
+</div>
+<!---------------------- -->
+<div id="container">
+  <nav class="top">
+    <ul>
+      <li><a id="mainlink" href="index.html">&#8962</a></li>
+      <!-- -->
+      <li><a href="#">Libro</a>
+      <ul>
+        <li><a href="notaciones_libro.html">Sobre <i>Tipografía y notaciones científicas</i></a></li>
+        <li><a href="dna_simbolo.html">&#191;Es <span class="caps">DNA</span> un s&iacute;mbolo internacional?</a></li>
+        <li><a href="simbolo_division.html">El s&iacute;mbolo de divisi&oacute;n</a></li>
+        <li><a href="marca_decimal.html">La marca decimal</a></li>
+        <li><a href="mol_definiciones.html">El mol: definici&oacute;n en varios diccionarios</a></li>
+        <li><a href="plural_unidades.html">El plural de nombres de unidades</a></li>
+        <li><a href="referencia_bibliografia.html">Referencias seg&uacute;n la ISO</a></li>
+        <li><a href="siglas_bibliograficas.html">Siglas bibliogr&aacute;ficas</a></li>
+        <li><a href="division_url.html">Ortotipograf&iacute;a de las URLs</a></li>
+        <li><a href="rae_estandares.html">La <span class="caps">RAE</span> y los est&aacute;ndares internacionales</a></li>
+        <!-- <li><a
+        href="dpd_simbolo.html">&#171;S&iacute;mbolo&#187; en el Panhisp&aacute;nico</a></li>-->
+        <li><a href="notaciones_cientificas.html">M&aacute;s&#8230;</a></li>
+      </ul></li>
+      <!-- -->
+      <li><a href="#">LaTeX</a>
+      <ul>
+        <li><a href="#">Packages</a>
+        <ul>
+          <li><a href="titlesec.html">titlesec</a></li>
+          <li><a href="titleps.html">titleps</a></li>
+          <li><a href="enumitem.html">enumitem</a></li>
+          <li><a href="spanish.html" title="babel">spanish</a></li>
+          <li><a href="tensind.html">tensind</a></li>
+          <li><a href="colorspace.html">colorspace</a></li>
+          <li><a href="accents.html">accents</a></li>
+          <li><a href="babel_news.html">babel</a></li>
+          <li><a href="esindex.html">esindex</a></li>
+        </ul>
+        <li><a href="articles.html">Artículos</a></li>
+        <li><a href="samples.html">Muestras</a></li>
+        <li><a href="notaciones.html">Notaciones</a></li>
+        <li><a href="xml.html">XML</a></li>
+        <li><a href="more.html">Más sobre TEX</a></li>
+      </ul>        
+      </li>
+      <!-- -->
+      <li><a href="#">Tipografía y estilo</a>
+      <ul>
+        <li><a href="ortotypo.html">Ortotipografía</a></li>
+        <li><a href="translit.html">Transliteraciones</a></li>
+        <li><a href="referencia_bibliografia.html">Bibliografías</a></li>
+        <li><a href="uso_minusculas_mayusculas.html">Minúsculas</a></li>
+        <li><a href="uso_cursivas.html">Cursivas</a></li>
+        <li><a href="ortotipografia_estilo.html">Más...</a>
+      </ul>
+      </li>
+      <!-- <li><a href="other.html">Miscelánea</a></li> -->
+      <li><a id="contactlink" href="contact.html">&#9993</a></li>
+    </ul>
+  </nav>
+</div>
+<!---------------------- -->
+<div class="foot"><p>© 2000-2021 Javier Bezos</p></div>
+</body>
+</html>
