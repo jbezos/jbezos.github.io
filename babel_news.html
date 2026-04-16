@@ -28,110 +28,11 @@
 
 <h1>Babel: news</h1>
 
-<p><b>This page is old. The current site for babel, the multilingual
-framework to localize LaTeX, LuaLaTeX and XeLaTeX, is <a
+<p><b>This page was old and contained very outdated info which could be
+misleading, so it has been removed. The current site for babel, the multilingual framework to
+localize LaTeX, LuaLaTeX and XeLaTeX, is <a
 href="https://latex3.github.io/babel/">here</a>.</b></p>
 
-<small><i>Updated: 2013-04-01</i></small>
-
-<p>Babel gets back on track and it is again actively maintained. Version
-3.9 was released on March 2013. Current version is 3.9b.</p>
-
-<p>See the
-<a href="http://mirrors.ctan.org/macros/latex/required/babel/base/README">README</a>
- for basic info, and
-<a href="http://mirror.ctan.org/macros/latex/required/babel/base/babel.pdf">babel.pdf</a>
-for the full documentation.</p>
-
-<p>Starting with this version, babel has been separated in a core (or
-“base”) part, and contributed language-specific packages, which should
-be maintained by its contributors. In particular, it shall be no
-longer necessary to synchronize Babel core releases with releases of
-Babel language files. See 
-<a href="http://mirror.ctan.org/macros/latex/required/babel/base/CONTRIB">CONTRIB</a>
-for some guidelines on contributing languages.</p>
-
-<p>The core part is located in the <a href="http://mirror.ctan.org/macros/latex/required/babel">subdirectory
-base</a>, the contrib
-part is actually a link into CTAN&#8217;s macros/latex/contrib subtree.</p>
-
-<p>No attempt has be done to take full advantage of the features
-provided by XeTeX and LuaTeX, which would require a completely new
-core (as for example <a href="http://www.ctan.org/pkg/polyglossia">polyglossia</a>
-or as part of LaTeX3).</p>
-
-<p>The goals were:
-<ul>
-<li>Fixing bugs (lots).</li>
-<li>Modularity.  Only some Babel core files will be maintained by the
-  LaTeX team (and some volunteers), and all other language specific
-  stuff should be maintained by its contributors. This requires extra
-  mechanisms to prevent or at least to overcome incompatibilities.</li>
-<li>A minimal compatibility with XeTeX and LuaTeX.</li>
-<li>Hyphenation. Loading patterns on demand (for luatex); an
-  engine/package-independent hyphen.cfg (and if possible, more lightweight).</li>
-<li>Shorthands. More control on them, including the possibility to
-  deactivate them altogether.</li>
-<li>Encodings. Captions in multiple encodings (not only <span class="caps">LICR</span>, but also,
-  eg, utf8); better case handling; strings defined
-  independently from the switching machanism.</li>
-<li>Plain. Making changes compatible.</li>
-<li>Creating test files.</li>
-</ul></p>
-
-<p>Most of these goals have been fulfilled.</p>
-
-<p>Here is a list of most of the new and extended macros:
-<ul>
-<li><code>\usershorthands*</code> is like <code>\useshorthands</code> but it makes sure shorthands
-are always activated.</li>
-<li><code>\defineshorthands</code> can be used to (re)define system and language
-shorthands, and a new level for language dependent user shorthands
-is added, which takes precedence over “normal” user shorthands.</li>
-<li><code>\shorthandoff*</code> restores the original catcode or definition (useful
-with <code>~</code> and <code>^</code>).</li>
-<li><code>\AfterBabelLanguage</code> sets code to be executed at the end of the
-corresponding ldf file.</li>
-<li><code>\babelhyphen</code> inserts a hyphen (soft, hard, nobreak&#8230;).</li>
-<li><code>\babelhyphenation</code> is like <code>\hyphenation</code> but for all languages or
-specific ones.</li>
-<li><code>\AddBabelHook</code> sets code to be executed at some &#8220;events&#8221;
-(<code>\EnableBabelHook</code> and <code>\DisableBabelHook</code> control them).</li>
-</ul></p>
-
-<p>New package options:
-<ul>
-<li><code>shorthands</code> sets which language/system shorthands are allowed.</li>
-<li><code>safe</code> sets if bib and/or ref macros are redefined.</li>
-<li><code>config</code> sets a different config file.</li>
-<li><code>main</code> sets the main language.</li>
-<li><code>headfoot</code> sets the language in heads and foots.</li>
-<li><code>noconfigs</code>: <code>.cfg</code> files are not loaded.</li>
-<li><code>showlanguages</code> prints to the log file the languages loaded in the format.</li>
-<li><code>math</code> control if shorthands are also active in math mode.</li>
-</ul></p>
-
-<p>Formerly, <code>switch.def</code> was preloaded into the format, which made
-difficult to upgrade Babel. It is still preloaded, but now it is
-loaded always with the package (provided the version number is
-different).  As to <code>hyphen.cfg</code>, its behaviour is the same as in the
-previous versions, but now it saves a list of loaded languages and
-there are several hooks for XeTeX and LuaTeX.</p>
-
-<p>There is also a new file, <code>bbunicode.dtx</code>, which defines some hooks for
-Unicode engines.</p>
-
-<p>See also:</p>
-
-<ul>
-<li>Frank Mittelbach and Chris Rowley, <a href="http://latex-project.org/papers/language-tug97-paper-revised.pdf">Language Information in
-Structured Documents: A Model for Mark-up and
-Rendering</a></li>
-<li>Javier Bezos, <a href="http://www.tug.org/TUGboat/tb27-0/bezos.pdf">Mem. A multilingual package for LaTeX with
-Aleph</a></li>
-</ul>
-
-<p>
  </div>
  <div class="extra"></p>
 
